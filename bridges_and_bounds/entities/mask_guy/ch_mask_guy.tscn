@@ -198,9 +198,8 @@ script = ExtResource("1_47tp5")
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_h8n4t")
-animation = &"jumping"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.55535
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10.5)
