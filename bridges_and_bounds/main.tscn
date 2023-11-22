@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqpopytlmy3xc"]
+[gd_scene load_steps=7 format=3 uid="uid://bqpopytlmy3xc"]
 
 [ext_resource type="Texture2D" uid="uid://ya1djrikyptw" path="res://bridges_and_bounds/art/background/t_yellow_d.png" id="1_nh21g"]
 [ext_resource type="Texture2D" uid="uid://c0lhbsh00jion" path="res://bridges_and_bounds/art/terrain/t_terrain_d.png" id="2_0fm0r"]
-[ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.tscn" id="3_8u1i4"]
+[ext_resource type="PackedScene" uid="uid://rlp0eoxx6wnr" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.tscn" id="3_8u1i4"]
+[ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://bridges_and_bounds/entities/main_character/ch_main_character.tscn" id="4_jf2mw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vx0mn"]
 texture = ExtResource("2_0fm0r")
@@ -529,8 +530,15 @@ text = "¡Feliz Puente Nuevo!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefaultVillager" parent="." instance=ExtResource("3_8u1i4")]
-position = Vector2(787, 238)
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_jf2mw")]
+z_index = 10
+position = Vector2(790, 232)
+collision_layer = 2
 
-[node name="Camera2D" type="Camera2D" parent="DefaultVillager"]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="Villager" parent="." instance=ExtResource("3_8u1i4")]
+position = Vector2(367, 269)
+collision_layer = 2

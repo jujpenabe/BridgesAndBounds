@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shpt1yh7apco"
-path="res://.godot/imported/t_default_villager_s.png-d4a72d882ebdb92339dfbecbfcbfa625.ctex"
+uid="uid://bjp173ogf1y7w"
+path="res://.godot/imported/t_default_villager_s.png-af96467aad2abab1e92751cd7eff8197.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/entities/default_villager/t_default_villager_s.png"
-dest_files=["res://.godot/imported/t_default_villager_s.png-d4a72d882ebdb92339dfbecbfcbfa625.ctex"]
+source_file="res://bridges_and_bounds/entities/main_character/t_default_villager_s.png"
+dest_files=["res://.godot/imported/t_default_villager_s.png-af96467aad2abab1e92751cd7eff8197.ctex"]
 
 [params]
 
