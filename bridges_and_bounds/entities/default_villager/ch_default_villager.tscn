@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://rlp0eoxx6wnr"]
+[gd_scene load_steps=18 format=3 uid="uid://rlp0eoxx6wnr"]
 
 [ext_resource type="Script" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.gd" id="1_nybc7"]
 [ext_resource type="Texture2D" uid="uid://bjp173ogf1y7w" path="res://bridges_and_bounds/entities/main_character/t_default_villager_s.png" id="2_0i2w4"]
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="3_oql8t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7wrt"]
 atlas = ExtResource("2_0i2w4")
@@ -97,8 +98,10 @@ animations = [{
 radius = 8.0
 height = 32.0
 
-[node name="Villager" type="CharacterBody2D"]
-collision_layer = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dpoi"]
+
+[node name="Villager" type="CharacterBody2D" groups=["villager"]]
+collision_layer = 4
 script = ExtResource("1_nybc7")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -106,7 +109,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.122041
+frame_progress = 0.683254
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_w2pdg")
@@ -114,4 +117,16 @@ shape = SubResource("CapsuleShape2D_w2pdg")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_oql8t")
+action_name = "to add"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_4dpoi")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

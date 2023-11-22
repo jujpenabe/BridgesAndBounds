@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bb8owqvksg3r2"]
+[gd_scene load_steps=15 format=3 uid="uid://bb8owqvksg3r2"]
 
 [ext_resource type="Script" path="res://bridges_and_bounds/entities/main_character/ch_main_character.gd" id="1_s5xp8"]
 [ext_resource type="Texture2D" uid="uid://bjp173ogf1y7w" path="res://bridges_and_bounds/entities/main_character/t_default_villager_s.png" id="2_36b18"]
-[ext_resource type="Texture2D" uid="uid://cgs0xbw0jj01q" path="res://bridges_and_bounds/entities/mask_guy/t_mask_guy_jump_d.png" id="3_tmofl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ec311"]
 atlas = ExtResource("2_36b18")
@@ -65,14 +64,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tmofl")
-}],
-"loop": true,
-"name": &"jumping",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8ogxu")
 }, {
 "duration": 1.0,
@@ -99,14 +90,14 @@ animations = [{
 radius = 3.0
 height = 10.6667
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_s5xp8")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kebt2")
-animation = &"walking"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

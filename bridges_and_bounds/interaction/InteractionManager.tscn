@@ -1,8 +1,13 @@
-[gd_scene format=3 uid="uid://dmorw2shhsrgd"]
+[gd_scene load_steps=3 format=3 uid="uid://dmorw2shhsrgd"]
+
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="1_0w5dd"]
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/InteractionManager.gd" id="1_xqtrf"]
 
 [node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_xqtrf")
 
 [node name="Label" type="Label" parent="."]
+z_index = 20
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -10,6 +15,7 @@ offset_left = -43.0
 offset_right = 43.0
 offset_bottom = 26.0
 grow_horizontal = 2
-text = "[S] TO HIRE"
+theme_override_fonts/font = ExtResource("1_0w5dd")
+text = "[S] TO"
 horizontal_alignment = 1
 vertical_alignment = 1
