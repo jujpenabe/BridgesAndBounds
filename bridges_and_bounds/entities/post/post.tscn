@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj07ueu17vgjy"]
+
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="1_heogp"]
+[ext_resource type="Texture2D" uid="uid://c0lhbsh00jion" path="res://bridges_and_bounds/art/terrain/t_terrain_d.png" id="2_50gcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2hfw"]
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_heogp")
+action_name = "[Q] or [W] or [E]"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_50gcj")
+region_enabled = true
+region_rect = Rect2(207.864, 144.195, 31.8631, 31.5734)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_s2hfw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
