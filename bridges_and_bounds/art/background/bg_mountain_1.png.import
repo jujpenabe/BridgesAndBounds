@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bag2shu151fpp"
-path="res://.godot/imported/tiles_town.png-e05f6813fcc91896c9d3e340cb98ea26.ctex"
+uid="uid://qstbt8b1r21v"
+path="res://.godot/imported/bg_mountain_1.png-f5db68547ebdb4add4c490a844a449b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/terrain/tiles_town.png"
-dest_files=["res://.godot/imported/tiles_town.png-e05f6813fcc91896c9d3e340cb98ea26.ctex"]
+source_file="res://bridges_and_bounds/art/background/bg_mountain_1.png"
+dest_files=["res://.godot/imported/bg_mountain_1.png-f5db68547ebdb4add4c490a844a449b5.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

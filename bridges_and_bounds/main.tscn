@@ -535,7 +535,7 @@ z_index = 10
 position = Vector2(203.749, 61.1628)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2, 2)
+offset = Vector2(0, -30)
 position_smoothing_enabled = true
 
 [node name="Node" type="Node" parent="."]
