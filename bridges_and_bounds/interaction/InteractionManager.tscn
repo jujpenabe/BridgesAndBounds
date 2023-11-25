@@ -7,6 +7,7 @@
 script = ExtResource("1_xqtrf")
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 z_index = 20
 anchors_preset = 5
 anchor_left = 0.5
@@ -19,3 +20,20 @@ theme_override_fonts/font = ExtResource("1_0w5dd")
 text = "[S] TO"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_right = 200.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("1_0w5dd")
+bbcode_enabled = true
+text = "a"
+autowrap_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
