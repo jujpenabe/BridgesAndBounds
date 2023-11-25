@@ -1,8 +1,10 @@
 extends CharacterBody2D
-
+class_name Player
 
 var _speed = 100.0
 @onready var sprite_2d = $Sprite2D
+# get reference of the camera
+@onready var camera = %Camera2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,6 +15,7 @@ var type_c_followers = []
 
 func _process(delta: float) -> void:
 	pass
+
 func _physics_process(delta):
 
 	# Animations
@@ -50,27 +53,22 @@ func register_follower(follow: CharacterBody2D) -> void:
 	else:
 		print("Error: Invalid follower type.")
 
-func assign_followers(type: int, post_pos: int) -> void:
+func assign_followers(type: int, post: Post) -> void:
 	if type == 0:
 		# take the first follower from the list and change its status to working
 		if (type_a_followers.size() == 0):
 			return
-		type_a_followers.pop_front().assign_to_post(post_pos)
-		print ("Assigned follower type A")
+		type_a_followers.pop_front().assign_to_post(post)
 	elif type == 1:
 		# take the first follower from the list and change its status to working
-		# then remove it from the list
 		if (type_b_followers.size() == 0):
 			return
-		type_b_followers.pop_front().assign_to_post(post_pos)
-		print ("Assigned follower type B")
+		type_b_followers.pop_front().assign_to_post(post)
 	elif type == 2:
 		# take the first follower from the list and change its status to working
-		# then remove it from the list
 		if (type_c_followers.size() == 0):
 			return
-		type_c_followers.pop_front().assign_to_post(post_pos)
-		print ("Assigned follower type C")
+		type_c_followers.pop_front().assign_to_post(post)
 	else:
 		print("Error: Invalid follower type.")
 

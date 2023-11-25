@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Villager
 
 enum {
 	IDLE,
@@ -14,6 +15,7 @@ var far_distance = 0;
 var is_following = false;
 var is_working = false;
 
+@onready var _rich_text_label = %RichTextLabel;
 @onready var sprite_2d = $Sprite2D
 @onready var interaction_area = $InteractionArea
 @onready var _player = get_tree().get_first_node_in_group("player");
@@ -23,7 +25,10 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact");
+	interaction_area.a_order = Callable(self, "_on_a_order");
 	interaction_area.stair = Callable(self, "_on_stair");
+	interaction_area.unfocus = Callable(self, "_on_unfocus");
+	_rich_text_label.hide();
 	randomize();
 
 func _process(delta: float) -> void:
@@ -101,12 +106,12 @@ func _process(delta: float) -> void:
 			_move(delta);
 		WORKING:
 			sprite_2d.animation = "working"
+
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	move_and_slide()
 
 func _move(delta):
@@ -204,6 +209,16 @@ func _on_timer_timeout() -> void:
 			else:
 				$Timer.wait_time = _choose([0.4, 0.4, 0.6]);
 
+func assign_to_post(post) -> void:
+	# Assign the NPC to a post.
+	is_following = false;
+	is_working = true;
+	_current_state = NEW_DIR;
+	# calculate far distance from current position to post position.
+	far_distance = position.x - post.position.x;
+	# Add to the pool of the pos
+	post.add_to_pool(self);
+
 func _on_interact() -> void:
 	# Add to the player's followers.
 	_player.register_follower(self);
@@ -213,15 +228,29 @@ func _on_interact() -> void:
 	is_following = true;
 	_current_state = NEW_DIR;
 
+func _on_a_order() -> void:
+	# empty for now
+	pass;
+
 func _on_stair() -> void:
+	# if typo is A color the character A in red.
+	# if typo is B color the character B in green.
+	# if typo is C color the character C in blue.
+	match type:
+		0:
+			_rich_text_label.bbcode_text = "[center] add [color=#cc194c]A[/color] (s) [/center]"
+		1:
+			_rich_text_label.bbcode_text = "[center] add [color=#4ce619]B[/color] (s) [/center]"
+		2:
+			_rich_text_label.bbcode_text = "[center] add [color=#194ce6]C[/color] (s) [/center]"
+	# modulate color of the last single character.
+
+	_rich_text_label.global_position = global_position;
+	_rich_text_label.global_position.y -= 48;
+	_rich_text_label.global_position.x -= _rich_text_label.size.x * 0.5;
+	_rich_text_label.show();
 	_current_state = IDLE;
 
-func assign_to_post(post_pos: int) -> void:
-	# Assign the NPC to a post.
-	is_following = false;
-	is_working = true;
-	_current_state = NEW_DIR;
-	# calculate far distance from current position to post position.
-	far_distance = position.x - post_pos;
-
-
+func _on_unfocus() -> void:
+	_rich_text_label.hide();
+	# _current_state = NEW_DIR;
