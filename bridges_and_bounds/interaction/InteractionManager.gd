@@ -27,8 +27,8 @@ func unregister_area(area: InteractionArea):
 		_timer.start(2);
 
 func _process(delta):
-	active_areas.sort_custom(_sort_by_distance_to_player);
 	_display_followers();
+	active_areas.sort_custom(_sort_by_distance_to_player);
 	if active_areas.size() > 0:
 		_rich_text_label.show();
 		active_areas.front().stair.call();
@@ -68,6 +68,7 @@ func _display_followers() -> void:
 	_rich_text_label.global_position = _player.camera.global_position;
 	_rich_text_label.global_position.y -= 128;
 	_rich_text_label.global_position.x -= _rich_text_label.size.x / 2;
+	print("It works")
 
 func _on_timer_timeout():
 	_rich_text_label.hide();

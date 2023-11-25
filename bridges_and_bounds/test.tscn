@@ -176,6 +176,7 @@ z_index = 4
 position = Vector2(-345, 168)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
 offset = Vector2(0, -30)
 position_smoothing_enabled = true
 
