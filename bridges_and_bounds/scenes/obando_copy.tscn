@@ -1,26 +1,26 @@
-[gd_scene load_steps=16 format=3 uid="uid://cl8ed0e8rd7e3"]
+[gd_scene load_steps=16 format=3 uid="uid://dhoe5ecvt3m0o"]
 
-[ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://bridges_and_bounds/art/tiles/town_1.tres" id="1_wdyun"]
-[ext_resource type="Texture2D" uid="uid://b4loaji7ypegc" path="res://bridges_and_bounds/art/background/bg_sky.png" id="2_h3aiu"]
-[ext_resource type="Texture2D" uid="uid://qstbt8b1r21v" path="res://bridges_and_bounds/art/background/bg_mountain_1.png" id="3_f3bc1"]
-[ext_resource type="Texture2D" uid="uid://qjtd5s7jh218" path="res://bridges_and_bounds/art/background/bg_cloud_1.png" id="4_5nk0r"]
-[ext_resource type="Texture2D" uid="uid://befc70jlfoxml" path="res://bridges_and_bounds/art/background/bg_mountain_2.png" id="5_kpwti"]
-[ext_resource type="Texture2D" uid="uid://b6bkqo2fy2d3" path="res://bridges_and_bounds/art/background/bg_cloud_2.png" id="6_jd8eg"]
-[ext_resource type="Texture2D" uid="uid://dcetmloqcylt1" path="res://bridges_and_bounds/art/background/bg_mountain_3.png" id="7_owusc"]
-[ext_resource type="Texture2D" uid="uid://cayy2fa2io3vw" path="res://bridges_and_bounds/art/background/bg_mountain_4.png" id="8_togt3"]
-[ext_resource type="TileSet" uid="uid://co5jrke0yixdr" path="res://bridges_and_bounds/art/tiles/town_2.tres" id="9_loafa"]
-[ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://bridges_and_bounds/entities/main_character/ch_main_character.tscn" id="10_e0186"]
-[ext_resource type="PackedScene" uid="uid://rlp0eoxx6wnr" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.tscn" id="11_boi36"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="12_eb7we"]
-[ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://bridges_and_bounds/entities/post/post.tscn" id="13_eag4n"]
-[ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://bridges_and_bounds/core/bridge/bridge.tscn" id="14_2bj6k"]
+[ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://bridges_and_bounds/art/tiles/town_1.tres" id="1_sq78a"]
+[ext_resource type="Texture2D" uid="uid://b4loaji7ypegc" path="res://bridges_and_bounds/art/background/bg_sky.png" id="2_0xmi3"]
+[ext_resource type="Texture2D" uid="uid://qstbt8b1r21v" path="res://bridges_and_bounds/art/background/bg_mountain_1.png" id="3_ps1rp"]
+[ext_resource type="Texture2D" uid="uid://qjtd5s7jh218" path="res://bridges_and_bounds/art/background/bg_cloud_1.png" id="4_eei1e"]
+[ext_resource type="Texture2D" uid="uid://befc70jlfoxml" path="res://bridges_and_bounds/art/background/bg_mountain_2.png" id="5_nd2lv"]
+[ext_resource type="Texture2D" uid="uid://b6bkqo2fy2d3" path="res://bridges_and_bounds/art/background/bg_cloud_2.png" id="6_vujha"]
+[ext_resource type="Texture2D" uid="uid://dcetmloqcylt1" path="res://bridges_and_bounds/art/background/bg_mountain_3.png" id="7_wq4n1"]
+[ext_resource type="Texture2D" uid="uid://cayy2fa2io3vw" path="res://bridges_and_bounds/art/background/bg_mountain_4.png" id="8_5ah7o"]
+[ext_resource type="TileSet" uid="uid://co5jrke0yixdr" path="res://bridges_and_bounds/art/tiles/town_2.tres" id="9_cf00e"]
+[ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://bridges_and_bounds/entities/main_character/ch_main_character.tscn" id="10_3680k"]
+[ext_resource type="PackedScene" uid="uid://rlp0eoxx6wnr" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.tscn" id="11_4mubo"]
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="12_5c2a4"]
+[ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://bridges_and_bounds/entities/post/post.tscn" id="13_3wqe0"]
+[ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://bridges_and_bounds/core/bridge/bridge.tscn" id="14_ar88x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r68jl"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_wdyun")
+tile_set = ExtResource("1_sq78a")
 collision_visibility_mode = 1
 format = 2
 layer_0/name = "layer 0"
@@ -46,7 +46,7 @@ layer_2/tile_data = PackedInt32Array(262151, 1703936, 2, 327687, 1703936, 3, 262
 motion_scale = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-texture = ExtResource("2_h3aiu")
+texture = ExtResource("2_0xmi3")
 centered = false
 
 [node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -56,7 +56,7 @@ motion_offset = Vector2(175, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain"]
 position = Vector2(-512, -128)
-texture = ExtResource("3_f3bc1")
+texture = ExtResource("3_ps1rp")
 centered = false
 
 [node name="Cloud" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -66,7 +66,7 @@ motion_mirroring = Vector2(1024, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud"]
 modulate = Color(1, 1, 1, 0.352941)
 position = Vector2(-669, -10)
-texture = ExtResource("4_5nk0r")
+texture = ExtResource("4_eei1e")
 centered = false
 
 [node name="Mountain2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -74,7 +74,7 @@ motion_scale = Vector2(0.2, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain2"]
 position = Vector2(-669, -10)
-texture = ExtResource("5_kpwti")
+texture = ExtResource("5_nd2lv")
 centered = false
 
 [node name="Cloud2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -83,7 +83,7 @@ motion_mirroring = Vector2(1522.44, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud2"]
 position = Vector2(-669, -38)
-texture = ExtResource("6_jd8eg")
+texture = ExtResource("6_vujha")
 centered = false
 
 [node name="Mountain3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -92,7 +92,7 @@ motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain3"]
 position = Vector2(-669, -10)
-texture = ExtResource("7_owusc")
+texture = ExtResource("7_wq4n1")
 centered = false
 
 [node name="Mountain4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -101,7 +101,7 @@ motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain4"]
 position = Vector2(-669, -10)
-texture = ExtResource("8_togt3")
+texture = ExtResource("8_5ah7o")
 centered = false
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -113,7 +113,7 @@ centered = false
 motion_scale = Vector2(0.8, 1)
 
 [node name="TileMap" type="TileMap" parent="ParallaxBackground/Town"]
-tile_set = ExtResource("9_loafa")
+tile_set = ExtResource("9_cf00e")
 format = 2
 layer_0/name = "layer 0"
 layer_0/modulate = Color(1, 0.905882, 0.741176, 1)
@@ -133,7 +133,7 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(131077, 1966081, 0, 196613, 1966081, 1, 262149, 1966081, 2, 327685, 1966081, 3, 131078, 2031617, 0, 196614, 2031617, 1, 262150, 2031617, 2, 327686, 2031617, 3, 262157, 1703937, 2, 327693, 1703937, 3, 262166, 1703937, 2, 327702, 1703937, 3, 131102, 1835009, 0, 196638, 1835009, 1, 262174, 1835009, 2, 327710, 1835009, 3, 131103, 1900545, 0, 196639, 1900545, 1, 262175, 1900545, 2, 327711, 1900545, 3, 262181, 1769473, 2, 327717, 1769473, 3, 262188, 1769473, 2, 327724, 1769473, 3)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("10_e0186")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("10_3680k")]
 z_index = 4
 position = Vector2(2574, 155)
 
@@ -144,70 +144,71 @@ position_smoothing_enabled = true
 
 [node name="Villagers" type="Node" parent="."]
 
-[node name="Villager" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2090, 83)
 type = 1
 
-[node name="Villager2" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager2" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2134, 95)
 type = 1
 
-[node name="Villager3" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager3" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2064, 93)
 type = 1
 
-[node name="Villager4" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager4" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(1988, 90)
 type = 1
 
-[node name="Villager5" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager5" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2041, 89)
 type = 1
 
-[node name="Villager6" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager6" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(1931, 89)
 type = 1
 
-[node name="Villager7" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager7" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(1908, 89)
 type = 2
 
-[node name="Villager8" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager8" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2183, 85)
 type = 2
 
-[node name="Villager9" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager9" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(2524, 82)
 type = 2
 
-[node name="Villager10" parent="Villagers" instance=ExtResource("11_boi36")]
+[node name="Villager10" parent="Villagers" instance=ExtResource("11_4mubo")]
 z_index = 2
 position = Vector2(1456, 75)
 
 [node name="InteractionArea" type="Area2D" parent="Villagers"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("12_eb7we")
+script = ExtResource("12_5c2a4")
 is_registrable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Villagers/InteractionArea"]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_r68jl")
 
-[node name="Post" parent="." instance=ExtResource("13_eag4n")]
+[node name="Post" parent="." instance=ExtResource("13_3wqe0")]
 position = Vector2(2302, 161)
 
-[node name="Bridge" parent="." instance=ExtResource("14_2bj6k")]
+[node name="Bridge" parent="." instance=ExtResource("14_ar88x")]
 position = Vector2(2655, 153)
+_max_effort = 5
 _max_resources = 10
 
 [node name="BridgeSprite" parent="Bridge" index="0"]
