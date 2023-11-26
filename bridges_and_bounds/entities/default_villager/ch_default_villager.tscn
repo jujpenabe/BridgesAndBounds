@@ -150,6 +150,7 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dpoi"]
 
 [node name="Villager" type="CharacterBody2D" groups=["villager"]]
+z_index = 2
 collision_layer = 4
 script = ExtResource("1_nybc7")
 
@@ -194,6 +195,8 @@ theme_override_fonts/normal_font = ExtResource("5_sj7b5")
 bbcode_enabled = true
 text = "[S]"
 autowrap_mode = 0
+
+[node name="SoundAxeHit" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]

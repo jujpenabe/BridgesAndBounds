@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 var _speed = 100.0
-@onready var sprite_2d = $Sprite2D
+@onready var _main_character = %Main
+@onready var _mount = %Mount
 # get reference of the camera
 @onready var camera = %Camera2D
 
@@ -20,9 +21,11 @@ func _physics_process(delta):
 
 	# Animations
 	if (velocity.x > 1 || velocity.x < -1):
-		sprite_2d.animation = "walking"
+		_main_character.animation = "walking"
+		_mount.animation = "walking"
 	else:
-		sprite_2d.animation = "idle"
+		_main_character.animation = "idle"
+		_mount.animation = "idle"
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -40,7 +43,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 	var isLeft = velocity.x < 0;
-	sprite_2d.flip_h = isLeft;
+	# if velocity is 0, keep the last direction
+	if (velocity.x != 0):
+		_main_character.flip_h = isLeft;
+		_mount.flip_h = isLeft;
+		if (isLeft):
+			_mount.offset.x = -6;
+		else:
+			_mount.offset.x = 6;
 
 # Register new followers.
 func register_follower(vill: Villager) -> void:

@@ -74,7 +74,7 @@ func assign_follower_from_post(vill: Villager):
 
 func _display_followers() -> void:
 	_rich_text_label.bbcode_text = "[center] Pacillences: \n" + "[color=red] A  [/color]" + str(_player.type_a_followers.size())  + " [color=green] B [/color]" + str(_player.type_b_followers.size()) + " [color=blue] C [/color]" + str(_player.type_c_followers.size())+"[/center]";
-	_rich_text_label.global_position = _player.camera.global_position;
+	_rich_text_label.global_position = _player.global_position;
 	_rich_text_label.global_position.y -= 128;
 	_rich_text_label.global_position.x -= _rich_text_label.size.x / 2;
 

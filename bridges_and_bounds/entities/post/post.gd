@@ -2,8 +2,9 @@ extends RigidBody2D
 class_name Post
 
 @onready var _interaction_area = %InteractionArea
-@onready var _sprite = %Sprite2D
+@onready var _sprite = %Facade
 @onready var _label = %Label
+@onready var _description_text: String = _label.text
 @onready var _production_timer = %PTimer
 @onready var _a_timer = %ATimer
 @onready var _b_timer = %BTimer
@@ -36,11 +37,10 @@ func _ready() -> void:
 
 	_interaction_area.stair = Callable(self, "_on_stair")
 	_interaction_area.unfocus = Callable(self, "_on_unfocus")
-
+	_label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Move Sprite Region to the right
 	pass
 
 func add_to_pool(vill: Villager) -> void:
@@ -82,6 +82,7 @@ func _on_interact() -> void:
 func _on_a_order() -> void:
 	_a_timer.start()
 	_can_cancel = true
+	print("A order")
 
 func _on_b_order() -> void:
 	_b_timer.start()
@@ -94,16 +95,24 @@ func _on_c_order() -> void:
 func _on_stair() -> void:
 	# if the pool is not full display the current number of villagers / the max
 	if !is_pool_full():
-		_label.text = str( _a_villagers.size() + _b_villagers.size() + _c_villagers.size()) + "/" + str(_max_villagers)
-		_label.global_position = _interaction_area.global_position
-		_label.global_position.y -= 32
-		_label.global_position.x -= _label.size.x * 0.5
-		_label.show()
+		# if pool is empty display 0/5 and the description text
+		if _a_villagers.size() + _b_villagers.size() + _c_villagers.size() == 0:
+			_label.text = _description_text
+			_label.global_position = _interaction_area.global_position
+			_label.global_position.y -= 32
+			_label.global_position.x -= _label.size.x * 0.5
+			_label.show()
+		else:
+			_label.text = str( _a_villagers.size() + _b_villagers.size() + _c_villagers.size()) + "/" + str(_max_villagers)
+			_label.global_position = _interaction_area.global_position
+			_label.global_position.y -= 16
+			_label.global_position.x -= _label.size.x * 0.5
+			_label.show()
 
 	elif is_pool_full():
 		_label.text = "Full"
 		_label.global_position = _interaction_area.global_position
-		_label.global_position.y -= 32
+		_label.global_position.y -= 16
 		_label.global_position.x -= _label.size.x * 0.5
 		_label.show()
 

@@ -13,14 +13,15 @@
 collision_layer = 8
 script = ExtResource("1_pyd3c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Facade" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 texture = ExtResource("1_7w08e")
 region_enabled = true
 region_rect = Rect2(160.453, 31.7169, 63.7653, 63.983)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_toequ")
 
 [node name="InteractionArea" type="Area2D" parent="."]
@@ -28,7 +29,6 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_heogp")
-is_registrable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 scale = Vector2(5, 5)

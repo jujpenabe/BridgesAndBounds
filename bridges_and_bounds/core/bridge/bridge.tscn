@@ -1,22 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh2ipdr70flys"]
+[gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
 
 [ext_resource type="Script" path="res://bridges_and_bounds/core/bridge/bridge.gd" id="1_h6jhr"]
+[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://bridges_and_bounds/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
 [ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
+[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://bridges_and_bounds/art/bridge/sprite_bridge_2.png" id="3_f763t"]
 [ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jp1nv"]
-
-[sub_resource type="Gradient" id="Gradient_tc4m0"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_007x7"]
-noise_type = 2
-frequency = 0.0584
-offset = Vector3(10.1, 0, 0)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cd311"]
-seamless = true
-color_ramp = SubResource("Gradient_tc4m0")
-noise = SubResource("FastNoiseLite_007x7")
+[ext_resource type="AudioStream" uid="uid://d1lxucp3j7wmr" path="res://bridges_and_bounds/effects/SFX_ConstructionLoop_02.wav" id="6_v056h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
 
@@ -36,15 +25,16 @@ script = ExtResource("1_h6jhr")
 
 [node name="BridgeSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = SubResource("PlaceholderTexture2D_jp1nv")
+texture = ExtResource("2_6hcqx")
 region_enabled = true
-region_rect = Rect2(160.453, 31.7169, 63.7653, 63.983)
+region_rect = Rect2(0, 0, 96, 96)
 
 [node name="ScaffoldSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = SubResource("NoiseTexture2D_cd311")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_f763t")
 region_enabled = true
-region_rect = Rect2(160.453, 31.7169, 63.7653, 63.983)
+region_rect = Rect2(0, 36, 64, 92)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)
@@ -55,7 +45,6 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_yqtl7")
-is_registrable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 scale = Vector2(5, 5)
@@ -103,6 +92,12 @@ wait_time = 0.4
 [node name="CTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.4
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="BuildSound1" type="AudioStreamPlayer2D" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("6_v056h")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

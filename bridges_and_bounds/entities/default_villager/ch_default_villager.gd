@@ -195,9 +195,9 @@ func _on_timer_timeout() -> void:
 			if far_distance > 50:
 				_current_state = _choose([NEW_DIR, IDLE]);
 			elif far_distance <= 50 &&  far_distance >= 0:
-				_current_state = _choose([NEW_DIR, WORKING, IDLE]);
-			elif far_distance < 0 && far_distance > -50:
 				_current_state = _choose([NEW_DIR, WORKING, WORKING, IDLE]);
+			elif far_distance < 0 && far_distance > -50:
+				_current_state = _choose([NEW_DIR, WORKING, WORKING, WORKING, IDLE]);
 			elif far_distance <= -50:
 				_current_state = _choose([NEW_DIR, IDLE]);
 
@@ -258,3 +258,7 @@ func follow_player() -> void:
 	is_following = true;
 	is_working = false;
 	_current_state = NEW_DIR;
+
+func new_far_distance(point: int) -> void:
+	far_distance = position.x - point;
+	
