@@ -41,7 +41,6 @@ func _process(delta):
 		# add a timer to hide after 2 seconds
 		pass
 
-
 func _sort_by_distance_to_player(area1, area2):
 	var area1_to_player = _player.global_position.distance_squared_to(area1.global_position);
 	var area2_to_player = _player.global_position.distance_squared_to(area2.global_position);
@@ -53,22 +52,31 @@ func _input(event):
 			await active_areas.front().interact.call();
 		if event.is_action_pressed("order_type_a"):
 			active_areas.front().a_order.call();
-
 		if event.is_action_pressed("order_type_b"):
 			active_areas.front().b_order.call();
 		if event.is_action_pressed("order_type_c"):
 			active_areas.front().c_order.call();
 
+		if event.is_action_released("order_type_a"):
+			active_areas.front().cancel_a_order.call();
+		if event.is_action_released("order_type_b"):
+			active_areas.front().cancel_b_order.call();
+		if event.is_action_released("order_type_c"):
+			active_areas.front().cancel_c_order.call();
+
 # function to assign follower to the post
-func assign_follower_to_post(type: int):
-	_player.assign_followers(type, active_areas.front().get_parent());
+func assign_follower_to_post(type: int, post: Post):
+	_player.assign_followers(type, post);
+
+# function to remove follower from the post
+func assign_follower_from_post(vill: Villager):
+	_player.register_follower(vill);
 
 func _display_followers() -> void:
 	_rich_text_label.bbcode_text = "[center] Pacillences: \n" + "[color=red] A  [/color]" + str(_player.type_a_followers.size())  + " [color=green] B [/color]" + str(_player.type_b_followers.size()) + " [color=blue] C [/color]" + str(_player.type_c_followers.size())+"[/center]";
 	_rich_text_label.global_position = _player.camera.global_position;
 	_rich_text_label.global_position.y -= 128;
 	_rich_text_label.global_position.x -= _rich_text_label.size.x / 2;
-	print("It works")
 
 func _on_timer_timeout():
 	_rich_text_label.hide();

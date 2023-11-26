@@ -43,32 +43,36 @@ func _physics_process(delta):
 	sprite_2d.flip_h = isLeft;
 
 # Register new followers.
-func register_follower(follow: CharacterBody2D) -> void:
-	if (follow.type == 0):
-		type_a_followers.append(follow)
-	elif (follow.type == 1):
-		type_b_followers.append(follow)
-	elif (follow.type == 2):
-		type_c_followers.append(follow)
-	else:
-		print("Error: Invalid follower type.")
+func register_follower(vill: Villager) -> void:
+	match vill.type:
+		0:
+			type_a_followers.append(vill)
+			print("Registered follower of type A.")
+		1:
+			type_b_followers.append(vill)
+			print("Registered follower of type B.")
+		2:
+			type_c_followers.append(vill)
+			print("Registered follower of type C.")
+		_:
+			print("Error: Invalid follower type.")
 
 func assign_followers(type: int, post: Post) -> void:
-	if type == 0:
-		# take the first follower from the list and change its status to working
-		if (type_a_followers.size() == 0):
-			return
-		type_a_followers.pop_front().assign_to_post(post)
-	elif type == 1:
-		# take the first follower from the list and change its status to working
-		if (type_b_followers.size() == 0):
-			return
-		type_b_followers.pop_front().assign_to_post(post)
-	elif type == 2:
-		# take the first follower from the list and change its status to working
-		if (type_c_followers.size() == 0):
-			return
-		type_c_followers.pop_front().assign_to_post(post)
-	else:
-		print("Error: Invalid follower type.")
-
+	match type:
+		0:
+			# take the first follower from the list and change its status to working
+			if (type_a_followers.size() == 0):
+				return
+			type_a_followers.pop_front().assign_to_post(post)
+		1:
+			# take the first follower from the list and change its status to working
+			if (type_b_followers.size() == 0):
+				return
+			type_b_followers.pop_front().assign_to_post(post)
+		2:
+			# take the first follower from the list and change its status to working
+			if (type_c_followers.size() == 0):
+				return
+			type_c_followers.pop_front().assign_to_post(post)
+		_:
+			print("Error: Invalid follower type.")

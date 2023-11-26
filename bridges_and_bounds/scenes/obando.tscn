@@ -218,6 +218,9 @@ region_rect = Rect2(160.453, 31.717, 64, 32)
 [connection signal="body_entered" from="Villagers/InteractionArea" to="Villagers/InteractionArea" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Villagers/InteractionArea" to="Villagers/InteractionArea" method="_on_body_exited" flags=18]
 [connection signal="body_exited" from="Post" to="Post" method="_on_body_exited"]
+[connection signal="timeout" from="Bridge/ATimer" to="Bridge" method="_on_a_timer_timeout"]
+[connection signal="timeout" from="Bridge/BTimer" to="Bridge" method="_on_b_timer_timeout"]
+[connection signal="timeout" from="Bridge/CTimer" to="Bridge" method="_on_c_timer_timeout"]
 
 [editable path="Post"]
 [editable path="Bridge"]

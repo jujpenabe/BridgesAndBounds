@@ -16,6 +16,16 @@ var b_order: Callable = func():
 var c_order: Callable = func():
 	pass
 
+
+var cancel_a_order: Callable = func():
+	pass
+
+var cancel_b_order: Callable = func():
+	pass
+
+var cancel_c_order: Callable = func():
+	pass
+
 var stair: Callable = func(text):
 	pass
 

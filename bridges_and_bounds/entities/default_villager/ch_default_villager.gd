@@ -108,7 +108,6 @@ func _process(delta: float) -> void:
 			sprite_2d.animation = "working"
 
 func _physics_process(delta: float) -> void:
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -221,12 +220,7 @@ func assign_to_post(post) -> void:
 
 func _on_interact() -> void:
 	# Add to the player's followers.
-	_player.register_follower(self);
-	InteractionManager.unregister_area(interaction_area);
-	interaction_area.monitoring = false;
-	$Timer.start(0.2);
-	is_following = true;
-	_current_state = NEW_DIR;
+	follow_player();
 
 func _on_a_order() -> void:
 	# empty for now
@@ -254,3 +248,13 @@ func _on_stair() -> void:
 func _on_unfocus() -> void:
 	_rich_text_label.hide();
 	# _current_state = NEW_DIR;
+
+func follow_player() -> void:
+	# Add to the player's followers.
+	_player.register_follower(self);
+	InteractionManager.unregister_area(interaction_area);
+	interaction_area.monitoring = false;
+	$Timer.start(0.2);
+	is_following = true;
+	is_working = false;
+	_current_state = NEW_DIR;

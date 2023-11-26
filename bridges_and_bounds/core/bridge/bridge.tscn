@@ -77,7 +77,7 @@ text = "[S] TO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
 
@@ -92,6 +92,18 @@ shape = SubResource("SegmentShape2D_i5mi3")
 unique_name_in_owner = true
 shape = SubResource("SegmentShape2D_selxd")
 
+[node name="ATimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="BTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="CTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PTimer" to="." method="_on_p_timer_timeout"]
