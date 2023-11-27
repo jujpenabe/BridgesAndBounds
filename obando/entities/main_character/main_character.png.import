@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsod4pripi422"
-path="res://.godot/imported/main_character.png-df6dd06aadb6c30225c944c52815d206.ctex"
+path="res://.godot/imported/main_character.png-f3a347be82fa2289ddccf8d65b136a47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/entities/main_character/main_character.png"
-dest_files=["res://.godot/imported/main_character.png-df6dd06aadb6c30225c944c52815d206.ctex"]
+source_file="res://obando/entities/main_character/main_character.png"
+dest_files=["res://.godot/imported/main_character.png-f3a347be82fa2289ddccf8d65b136a47.ctex"]
 
 [params]
 

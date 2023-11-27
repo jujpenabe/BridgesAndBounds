@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ba2o5wwoim60h"
-path="res://.godot/imported/obando_main_theme.wav-06308b6e9be74ea57bc0022be4b059ce.sample"
+path="res://.godot/imported/obando_main_theme.wav-ba10bdab25bb51c5f57d9211b3e46d62.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/music/main_theme/obando_main_theme.wav"
-dest_files=["res://.godot/imported/obando_main_theme.wav-06308b6e9be74ea57bc0022be4b059ce.sample"]
+source_file="res://obando/art/music/main_theme/obando_main_theme.wav"
+dest_files=["res://.godot/imported/obando_main_theme.wav-ba10bdab25bb51c5f57d9211b3e46d62.sample"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmjvomq6o000i"
-path="res://.godot/imported/t_brown_d.png-6b483967e33b522b7139527cf6c266f9.ctex"
+path="res://.godot/imported/t_brown_d.png-09c7789bc904559525c9432364d6f474.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/background/t_brown_d.png"
-dest_files=["res://.godot/imported/t_brown_d.png-6b483967e33b522b7139527cf6c266f9.ctex"]
+source_file="res://obando/art/background/t_brown_d.png"
+dest_files=["res://.godot/imported/t_brown_d.png-09c7789bc904559525c9432364d6f474.ctex"]
 
 [params]
 

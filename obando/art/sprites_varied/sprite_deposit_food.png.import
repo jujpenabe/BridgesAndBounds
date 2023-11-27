@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b10sj1qq1gl84"
-path="res://.godot/imported/sprite_deposit_food.png-ab645ab0b9ce2f588421a3e38d842ca8.ctex"
+path="res://.godot/imported/sprite_deposit_food.png-9873946206490a86ae3c06037c5da0e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/sprites_varied/sprite_deposit_food.png"
-dest_files=["res://.godot/imported/sprite_deposit_food.png-ab645ab0b9ce2f588421a3e38d842ca8.ctex"]
+source_file="res://obando/art/sprites_varied/sprite_deposit_food.png"
+dest_files=["res://.godot/imported/sprite_deposit_food.png-9873946206490a86ae3c06037c5da0e1.ctex"]
 
 [params]
 

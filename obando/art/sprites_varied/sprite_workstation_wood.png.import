@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://83nsjh67072g"
-path="res://.godot/imported/sprite_workstation_wood.png-85bfa95ffbed1912014d28effa8827d9.ctex"
+path="res://.godot/imported/sprite_workstation_wood.png-b22484ae9f1fbecdd302bf18306a13f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/sprites_varied/sprite_workstation_wood.png"
-dest_files=["res://.godot/imported/sprite_workstation_wood.png-85bfa95ffbed1912014d28effa8827d9.ctex"]
+source_file="res://obando/art/sprites_varied/sprite_workstation_wood.png"
+dest_files=["res://.godot/imported/sprite_workstation_wood.png-b22484ae9f1fbecdd302bf18306a13f1.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://befc70jlfoxml"
-path="res://.godot/imported/bg_mountain_2.png-de12f67d5de36e383a014de3ffd1f68b.ctex"
+path="res://.godot/imported/bg_mountain_2.png-c5f45dcd2d95d7362a172f1f9f77ccae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/background/bg_mountain_2.png"
-dest_files=["res://.godot/imported/bg_mountain_2.png-de12f67d5de36e383a014de3ffd1f68b.ctex"]
+source_file="res://obando/art/background/bg_mountain_2.png"
+dest_files=["res://.godot/imported/bg_mountain_2.png-c5f45dcd2d95d7362a172f1f9f77ccae.ctex"]
 
 [params]
 

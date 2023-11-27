@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://basgsp8c4l6t7"
-path="res://.godot/imported/t_pink_d.png-1ef52e16bbb25a6b50b75cc4f8e27633.ctex"
+path="res://.godot/imported/t_pink_d.png-3b4efc2b8b6dac476ba9f229cc3040dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/background/t_pink_d.png"
-dest_files=["res://.godot/imported/t_pink_d.png-1ef52e16bbb25a6b50b75cc4f8e27633.ctex"]
+source_file="res://obando/art/background/t_pink_d.png"
+dest_files=["res://.godot/imported/t_pink_d.png-3b4efc2b8b6dac476ba9f229cc3040dc.ctex"]
 
 [params]
 

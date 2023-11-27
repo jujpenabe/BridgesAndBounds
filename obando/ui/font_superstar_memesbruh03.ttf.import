@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c4ae5wgpw7jjj"
-path="res://.godot/imported/font_superstar_memesbruh03.ttf-9eb2865d73273c77f9d322b5ac499ecc.fontdata"
+path="res://.godot/imported/font_superstar_memesbruh03.ttf-68aa4c60c17b57b1c3492f662ad19350.fontdata"
 
 [deps]
 
-source_file="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf"
-dest_files=["res://.godot/imported/font_superstar_memesbruh03.ttf-9eb2865d73273c77f9d322b5ac499ecc.fontdata"]
+source_file="res://obando/ui/font_superstar_memesbruh03.ttf"
+dest_files=["res://.godot/imported/font_superstar_memesbruh03.ttf-68aa4c60c17b57b1c3492f662ad19350.fontdata"]
 
 [params]
 

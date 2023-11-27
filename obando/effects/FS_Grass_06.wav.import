@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://sonegwhm6fa3"
-path="res://.godot/imported/FS_Grass_06.wav-fb302f5e864da7d0bd86eb8a1c45f76b.sample"
+path="res://.godot/imported/FS_Grass_06.wav-80b67d88032b213ee6ee7b7798e72ba9.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/FS_Grass_06.wav"
-dest_files=["res://.godot/imported/FS_Grass_06.wav-fb302f5e864da7d0bd86eb8a1c45f76b.sample"]
+source_file="res://obando/effects/FS_Grass_06.wav"
+dest_files=["res://.godot/imported/FS_Grass_06.wav-80b67d88032b213ee6ee7b7798e72ba9.sample"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csci1aljghgc1"
-path="res://.godot/imported/sprite_bridge.png-8e9ed0228926bcc5001fd3f75a6cd11e.ctex"
+path="res://.godot/imported/sprite_bridge.png-a7844d696bcd03f606aabf8676ae6f9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/bridge/sprite_bridge.png"
-dest_files=["res://.godot/imported/sprite_bridge.png-8e9ed0228926bcc5001fd3f75a6cd11e.ctex"]
+source_file="res://obando/art/bridge/sprite_bridge.png"
+dest_files=["res://.godot/imported/sprite_bridge.png-a7844d696bcd03f606aabf8676ae6f9e.ctex"]
 
 [params]
 
