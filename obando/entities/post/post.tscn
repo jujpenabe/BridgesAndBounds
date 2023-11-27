@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj07ueu17vgjy"]
+
+[ext_resource type="Texture2D" uid="uid://bag2shu151fpp" path="res://bridges_and_bounds/art/terrain/tiles_town.png" id="1_7w08e"]
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="1_heogp"]
+[ext_resource type="Script" path="res://bridges_and_bounds/entities/post/post.gd" id="1_pyd3c"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="4_su2ae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y23sc"]
+
+[node name="Post" type="RigidBody2D"]
+collision_layer = 8
+script = ExtResource("1_pyd3c")
+
+[node name="Facade" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+texture = ExtResource("1_7w08e")
+region_enabled = true
+region_rect = Rect2(160.453, 31.7169, 63.7653, 63.983)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_toequ")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_heogp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_y23sc")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -80.0
+offset_right = 11.0
+offset_bottom = -54.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_su2ae")
+text = "[S] TO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="ATimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="BTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="CTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+[connection signal="timeout" from="PTimer" to="." method="_on_p_timer_timeout"]
+[connection signal="timeout" from="ATimer" to="." method="_on_a_timer_timeout"]
+[connection signal="timeout" from="BTimer" to="." method="_on_b_timer_timeout"]
+[connection signal="timeout" from="CTimer" to="." method="_on_c_timer_timeout"]

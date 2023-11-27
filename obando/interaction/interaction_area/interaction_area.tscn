@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhrsn1bojuk58"]
+
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="1_nh0xl"]
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nh0xl")

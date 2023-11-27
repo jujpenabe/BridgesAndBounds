@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
+
+[ext_resource type="Script" path="res://bridges_and_bounds/core/bridge/bridge.gd" id="1_h6jhr"]
+[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://bridges_and_bounds/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
+[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
+[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://bridges_and_bounds/art/bridge/sprite_bridge_2.png" id="3_f763t"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
+[ext_resource type="AudioStream" uid="uid://d1lxucp3j7wmr" path="res://bridges_and_bounds/effects/SFX_ConstructionLoop_02.wav" id="6_v056h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y23sc"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5mi3"]
+a = Vector2(0, 32)
+b = Vector2(32, 32)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_selxd"]
+a = Vector2(32, 32)
+b = Vector2(32, 0)
+
+[node name="Bridge" type="RigidBody2D"]
+collision_layer = 8
+script = ExtResource("1_h6jhr")
+
+[node name="BridgeSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_6hcqx")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="ScaffoldSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_f763t")
+region_enabled = true
+region_rect = Rect2(0, 36, 64, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_toequ")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_yqtl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_y23sc")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -80.0
+offset_right = 11.0
+offset_bottom = -54.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_giklw")
+text = "[S] TO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="BridgeLimit" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_i5mi3")
+
+[node name="BridgeFloor" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_selxd")
+
+[node name="ATimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="BTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="CTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="BuildSound1" type="AudioStreamPlayer2D" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("6_v056h")
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+[connection signal="timeout" from="PTimer" to="." method="_on_p_timer_timeout"]
