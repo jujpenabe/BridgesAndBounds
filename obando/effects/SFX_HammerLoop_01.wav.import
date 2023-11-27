@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://16tveyfm73ru"
-path="res://.godot/imported/SFX_HammerLoop_01.wav-28da40712dbd1c4480850af2ae3a0c27.sample"
+uid="uid://dawypi2xielqw"
+path="res://.godot/imported/SFX_HammerLoop_01.wav-f9a60715e21ab36585cf7911cd14def9.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/SFX_HammerLoop_01.wav"
-dest_files=["res://.godot/imported/SFX_HammerLoop_01.wav-28da40712dbd1c4480850af2ae3a0c27.sample"]
+source_file="res://obando/effects/SFX_HammerLoop_01.wav"
+dest_files=["res://.godot/imported/SFX_HammerLoop_01.wav-f9a60715e21ab36585cf7911cd14def9.sample"]
 
 [params]
 

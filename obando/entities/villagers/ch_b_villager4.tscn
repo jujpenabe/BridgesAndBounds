@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://xsg2vxvhnja5"]
 
-[ext_resource type="Script" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.gd" id="1_2spl5"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="2_d0vvu"]
-[ext_resource type="Texture2D" uid="uid://8jae70nuprb4" path="res://bridges_and_bounds/entities/villagers/villager_b_3.png" id="2_keaby"]
-[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="3_vspxp"]
+[ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_2spl5"]
+[ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_d0vvu"]
+[ext_resource type="Texture2D" uid="uid://8jae70nuprb4" path="res://obando/entities/villagers/villager_b_3.png" id="2_keaby"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="3_vspxp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qhqf"]
 atlas = ExtResource("2_keaby")

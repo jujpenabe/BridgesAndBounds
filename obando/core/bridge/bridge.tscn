@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
 
-[ext_resource type="Script" path="res://bridges_and_bounds/core/bridge/bridge.gd" id="1_h6jhr"]
-[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://bridges_and_bounds/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
-[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://bridges_and_bounds/art/bridge/sprite_bridge_2.png" id="3_f763t"]
-[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
-[ext_resource type="AudioStream" uid="uid://d1lxucp3j7wmr" path="res://bridges_and_bounds/effects/SFX_ConstructionLoop_02.wav" id="6_v056h"]
+[ext_resource type="Script" path="res://obando/core/bridge/bridge.gd" id="1_h6jhr"]
+[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://obando/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
+[ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
+[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://obando/art/bridge/sprite_bridge_2.png" id="3_f763t"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
+[ext_resource type="AudioStream" uid="uid://cemxkp2feu3bj" path="res://obando/effects/SFX_ConstructionLoop_02.wav" id="6_6a37r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
 
@@ -97,7 +97,7 @@ wait_time = 0.4
 
 [node name="BuildSound1" type="AudioStreamPlayer2D" parent="SFX"]
 unique_name_in_owner = true
-stream = ExtResource("6_v056h")
+stream = ExtResource("6_6a37r")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
