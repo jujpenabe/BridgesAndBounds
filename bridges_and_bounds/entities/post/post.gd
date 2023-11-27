@@ -13,7 +13,7 @@ class_name Post
 @export var _max_villagers: int = 5
 @export var _max_effort: int = 10
 @export var _max_resources: int = 5
-@export_enum("A", "B", "C") var type: int = 0;
+@export_enum("Chop", "Farm", "Cook", "Build") var type: int = 0;
 
 
 var _a_villagers: Array = []
@@ -82,7 +82,6 @@ func _on_interact() -> void:
 func _on_a_order() -> void:
 	_a_timer.start()
 	_can_cancel = true
-	print("A order")
 
 func _on_b_order() -> void:
 	_b_timer.start()

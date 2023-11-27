@@ -7,13 +7,14 @@ enum {
 	MOVE,
 	WORKING
 }
-@export_enum("A", "B", "C") var type: int = 0;
+@export_enum("A", "B", "C",) var type: int = 0;
 @export var _speed = 30;
 var _current_state = IDLE;
-var current_dir = Vector2.RIGHT;
-var far_distance = 0;
-var is_following = false;
-var is_working = false;
+var _current_dir = Vector2.RIGHT;
+var _far_distance = 0;
+var _is_following = false;
+var _is_working = false;
+var _current_work:int = 0;
 
 @onready var _rich_text_label = %RichTextLabel;
 @onready var sprite_2d = $Sprite2D
@@ -36,50 +37,50 @@ func _process(delta: float) -> void:
 		IDLE:
 			sprite_2d.animation = "idle"
 		NEW_DIR:
-			if is_following:
+			if _is_following:
 				# If the player is following, set the current state to NEW_DIR.
 				#check if the player is to the left or right of the NPC.
 				if _player.position.x >= position.x + 100:
 					sprite_2d.flip_h = false;
-					current_dir = Vector2.RIGHT;
+					_current_dir = Vector2.RIGHT;
 				elif _player.position.x <= position.x - 100:
 					sprite_2d.flip_h = true;
-					current_dir = Vector2.LEFT;
+					_current_dir = Vector2.LEFT;
 				elif _player.position.x < position.x + 100 && _player.position.x >= position.x + 25:
 					sprite_2d.flip_h = false;
-					current_dir = Vector2.RIGHT;
+					_current_dir = Vector2.RIGHT;
 				elif _player.position.x > position.x - 100 && _player.position.x <= position.x - 25:
 					sprite_2d.flip_h = true;
-					current_dir = Vector2.LEFT;
+					_current_dir = Vector2.LEFT;
 				elif _player.position.x < position.x + 25 && _player.position.x > 0:
 					sprite_2d.flip_h = false;
-					current_dir = Vector2.RIGHT;
+					_current_dir = Vector2.RIGHT;
 				elif _player.position.x > position.x - 25 && _player.position.x <=0:
 					sprite_2d.flip_h = true;
-					current_dir = Vector2.LEFT;
+					_current_dir = Vector2.LEFT;
 				else:
 					pass;
 			else:
 				# If the far distance is greater than 0, add another Vector2.LEFT to the choose array.
 				var array = [Vector2.RIGHT, Vector2.LEFT];
-				if far_distance > 0:
-					# Make array based on far_distance.
-					for i in range(abs(int(far_distance))):
+				if _far_distance > 0:
+					# Make array based on _far_distance.
+					for i in range(abs(int(_far_distance))):
 						array.append(Vector2.LEFT);
-					current_dir = _choose(array);
+					_current_dir = _choose(array);
 				else:
-					# Make array based on far_distance.
-					for i in range(abs(int(far_distance))):
+					# Make array based on _far_distance.
+					for i in range(abs(int(_far_distance))):
 						array.append(Vector2.RIGHT);
-					current_dir = _choose(array);
+					_current_dir = _choose(array);
 			# If the current direction is Vector2.RIGHT, set the sprite's flip_h to false.
-			if current_dir == Vector2.RIGHT:
+			if _current_dir == Vector2.RIGHT:
 				sprite_2d.flip_h = false;
 			else:
 				sprite_2d.flip_h = true;
 			_current_state = MOVE;
 		MOVE:
-			if is_following:
+			if _is_following:
 				if _player.position.x >= position.x + 100:
 					_speed = move_toward(_speed, 90, _choose([5, 10]));
 				elif _player.position.x <= position.x - 100:
@@ -94,18 +95,26 @@ func _process(delta: float) -> void:
 					_speed = move_toward(_speed, 30, 5);
 				else:
 					_current_state = IDLE
-			elif is_working:
-				if far_distance > 50:
+			elif _is_working:
+				if _far_distance > 50:
 					_speed = move_toward(_speed, 60, 5);
-				elif far_distance <= 50 &&  far_distance >= 0:
+				elif _far_distance <= 50 &&  _far_distance >= 0:
 					_speed = move_toward(_speed, 30, 10);
-				elif far_distance < 0 && far_distance > -50:
+				elif _far_distance < 0 && _far_distance > -50:
 					_speed = move_toward(_speed, 30, 10);
-				elif far_distance <= -50:
+				elif _far_distance <= -50:
 					_speed = move_toward(_speed, 60, 5);
 			_move(delta);
 		WORKING:
-			sprite_2d.animation = "working"
+			match _current_work:
+				0:
+					sprite_2d.animation = "chopping"
+				1:
+					sprite_2d.animation = "farming"
+				2:
+					sprite_2d.animation = "cooking"
+				3:
+					sprite_2d.animation = "building"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -114,8 +123,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _move(delta):
-	var _delta = current_dir * _speed * delta;
-	far_distance += _delta.x;
+	var _delta = _current_dir * _speed * delta;
+	_far_distance += _delta.x;
 	position += _delta;
 	sprite_2d.animation = "walking"
 
@@ -126,7 +135,7 @@ func _choose(array):
 func _on_timer_timeout() -> void:
 	match  _current_state:
 		IDLE:
-			if is_following:
+			if _is_following:
 				if _player.position.x >= position.x + 75 || _player.position.x <= position.x - 75:
 					_current_state = _choose([NEW_DIR, MOVE, NEW_DIR]);
 				else:
@@ -138,14 +147,14 @@ func _on_timer_timeout() -> void:
 					$Timer.wait_time = _choose([0.8, 1.6, 2.4, 3.2]);
 				else:
 					$Timer.wait_time = _choose([0.4, 0.6]);
-			elif is_working:
-				if far_distance > 75:
+			elif _is_working:
+				if _far_distance > 75:
 					_current_state = _choose([NEW_DIR]);
-				elif far_distance <= 75 &&  far_distance >= 0:
+				elif _far_distance <= 75 &&  _far_distance >= 0:
 					_current_state = _choose([NEW_DIR, WORKING, WORKING]);
-				elif far_distance < 0 && far_distance > -75:
+				elif _far_distance < 0 && _far_distance > -75:
 					_current_state = _choose([NEW_DIR, WORKING, WORKING, IDLE]);
-				elif far_distance <= -75:
+				elif _far_distance <= -75:
 					_current_state = _choose([NEW_DIR]);
 
 				match _current_state:
@@ -161,7 +170,7 @@ func _on_timer_timeout() -> void:
 		NEW_DIR:
 			print("NEW_DIR");
 		MOVE:
-			if is_following:
+			if _is_following:
 				if _player.position.x >= position.x + 75 || _player.position.x <= position.x - 75:
 					_current_state = _choose([NEW_DIR, NEW_DIR, NEW_DIR, IDLE]);
 				else:
@@ -170,14 +179,14 @@ func _on_timer_timeout() -> void:
 					$Timer.wait_time = _choose([0.2, 0.2, 0.4]);
 				elif _current_state == IDLE:
 					$Timer.wait_time = _choose([1, 1.5]);
-			elif is_working:
-				if far_distance > 75:
+			elif _is_working:
+				if _far_distance > 75:
 					_current_state = _choose([NEW_DIR, IDLE]);
-				elif far_distance <= 75 &&  far_distance >= 0:
+				elif _far_distance <= 75 &&  _far_distance >= 0:
 					_current_state = _choose([NEW_DIR, WORKING, IDLE]);
-				elif far_distance < 0 && far_distance > -75:
+				elif _far_distance < 0 && _far_distance > -75:
 					_current_state = _choose([NEW_DIR, WORKING, WORKING, IDLE]);
-				elif far_distance <= -75:
+				elif _far_distance <= -75:
 					_current_state = _choose([NEW_DIR, IDLE]);
 
 				if _current_state == IDLE:
@@ -192,13 +201,13 @@ func _on_timer_timeout() -> void:
 					$Timer.wait_time = _choose([2.4, 3.2]);
 		WORKING:
 			# If too far dont work.
-			if far_distance > 50:
+			if _far_distance > 50:
 				_current_state = _choose([NEW_DIR, IDLE]);
-			elif far_distance <= 50 &&  far_distance >= 0:
+			elif _far_distance <= 50 &&  _far_distance >= 0:
 				_current_state = _choose([NEW_DIR, WORKING, WORKING, IDLE]);
-			elif far_distance < 0 && far_distance > -50:
+			elif _far_distance < 0 && _far_distance > -50:
 				_current_state = _choose([NEW_DIR, WORKING, WORKING, WORKING, IDLE]);
-			elif far_distance <= -50:
+			elif _far_distance <= -50:
 				_current_state = _choose([NEW_DIR, IDLE]);
 
 			if _current_state == WORKING:
@@ -210,13 +219,15 @@ func _on_timer_timeout() -> void:
 
 func assign_to_post(post) -> void:
 	# Assign the NPC to a post.
-	is_following = false;
-	is_working = true;
+	_is_following = false;
+	_is_working = true;
 	_current_state = NEW_DIR;
 	# calculate far distance from current position to post position.
-	far_distance = position.x - post.position.x;
+	_far_distance = position.x - post.position.x;
 	# Add to the pool of the pos
 	post.add_to_pool(self);
+	# set the animation based on the type of the post.
+	_current_work = post.type;	
 
 func _on_interact() -> void:
 	# Add to the player's followers.
@@ -255,10 +266,9 @@ func follow_player() -> void:
 	InteractionManager.unregister_area(interaction_area);
 	interaction_area.monitoring = false;
 	$Timer.start(0.2);
-	is_following = true;
-	is_working = false;
+	_is_following = true;
+	_is_working = false;
 	_current_state = NEW_DIR;
 
 func new_far_distance(point: int) -> void:
-	far_distance = position.x - point;
-	
+	_far_distance = position.x - point;

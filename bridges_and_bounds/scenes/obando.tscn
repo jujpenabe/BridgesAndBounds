@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cayy2fa2io3vw" path="res://bridges_and_bounds/art/background/bg_mountain_4.png" id="8_togt3"]
 [ext_resource type="TileSet" uid="uid://co5jrke0yixdr" path="res://bridges_and_bounds/art/tiles/town_2.tres" id="9_loafa"]
 [ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://bridges_and_bounds/entities/main_character/ch_main_character.tscn" id="10_e0186"]
-[ext_resource type="PackedScene" uid="uid://rlp0eoxx6wnr" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.tscn" id="11_boi36"]
+[ext_resource type="PackedScene" uid="uid://rlp0eoxx6wnr" path="res://bridges_and_bounds/entities/default_villager/ch_default_character.tscn" id="11_boi36"]
 [ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="12_eb7we"]
 [ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://bridges_and_bounds/entities/post/post.tscn" id="13_eag4n"]
 [ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://bridges_and_bounds/core/bridge/bridge.tscn" id="14_2bj6k"]
