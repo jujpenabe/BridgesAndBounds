@@ -17,8 +17,8 @@ config/icon="res://bridges_and_bounds/icon.svg"
 
 [autoload]
 
-MainTheme="*res://obando/art/music/main_theme/main_theme.tscn"
 InteractionManager="*res://obando/interaction/InteractionManager.tscn"
+MainTheme="*res://obando/art/music/main_theme/main_theme.tscn"
 
 [display]
 
