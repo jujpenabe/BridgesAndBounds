@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
 
-[ext_resource type="Script" path="res://obando/core/bridge/bridge.gd" id="1_h6jhr"]
+[ext_resource type="Script" path="res://obando/core/bridge/bridge.gd" id="1_8txy6"]
 [ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://obando/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
 [ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
 [ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://obando/art/bridge/sprite_bridge_2.png" id="3_f763t"]
@@ -21,7 +21,7 @@ b = Vector2(32, 0)
 
 [node name="Bridge" type="RigidBody2D"]
 collision_layer = 8
-script = ExtResource("1_h6jhr")
+script = ExtResource("1_8txy6")
 
 [node name="BridgeSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -83,15 +83,15 @@ shape = SubResource("SegmentShape2D_selxd")
 
 [node name="ATimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="BTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="CTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="SFX" type="Node" parent="."]
 

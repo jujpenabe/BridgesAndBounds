@@ -41,17 +41,17 @@ region = Rect2(32, 96, 32, 32)
 atlas = ExtResource("2_fhi0l")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmd6j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfg0b"]
 atlas = ExtResource("2_fhi0l")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(0, 128, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j355u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek6om"]
 atlas = ExtResource("2_fhi0l")
-region = Rect2(32, 96, 32, 32)
+region = Rect2(32, 128, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2wf8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4of24"]
 atlas = ExtResource("2_fhi0l")
-region = Rect2(64, 96, 32, 32)
+region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5r308"]
 atlas = ExtResource("2_fhi0l")
@@ -139,13 +139,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wmd6j")
+"texture": SubResource("AtlasTexture_lfg0b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j355u")
+"texture": SubResource("AtlasTexture_ek6om")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o2wf8")
+"texture": SubResource("AtlasTexture_4of24")
 }],
 "loop": true,
 "name": &"farming",
@@ -206,7 +206,7 @@ script = ExtResource("1_j5gev")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
-animation = &"walking"
+animation = &"farming"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

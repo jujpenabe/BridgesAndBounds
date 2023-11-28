@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj07ueu17vgjy"]
+[gd_scene load_steps=8 format=3 uid="uid://bj07ueu17vgjy"]
 
-[ext_resource type="Texture2D" uid="uid://bag2shu151fpp" path="res://obando/art/terrain/tiles_town.png" id="1_7w08e"]
 [ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="1_heogp"]
 [ext_resource type="Script" path="res://obando/entities/post/post.gd" id="1_pyd3c"]
+[ext_resource type="Texture2D" uid="uid://c677lj146bjmd" path="res://obando/art/sprites_varied/sprite_deposit_cob.png" id="2_omkk7"]
 [ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="4_su2ae"]
+[ext_resource type="AudioStream" uid="uid://cemxkp2feu3bj" path="res://obando/effects/SFX_ConstructionLoop_02.wav" id="5_4y3tb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
 
@@ -16,9 +17,10 @@ script = ExtResource("1_pyd3c")
 [node name="Facade" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-texture = ExtResource("1_7w08e")
+position = Vector2(0, 16)
+texture = ExtResource("2_omkk7")
 region_enabled = true
-region_rect = Rect2(160.453, 31.7169, 63.7653, 63.983)
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4, 4)
@@ -56,15 +58,19 @@ autostart = true
 
 [node name="ATimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="BTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="CTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
+
+[node name="ProductionStreamPlayer1" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_4y3tb")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

@@ -7,7 +7,7 @@ class_name Bridge
 @onready var _bridge_floor = %BridgeFloor
 
 # SFX
-@onready var _buildSound1 = %BuildSound1
+@onready var _build_sound1 = %BuildSound1
 
 var _progress = 0
 var _section = 40
@@ -18,10 +18,24 @@ var _section = 40
 
 # On readt set the wood amount to 10
 func _ready() -> void:
-	super._ready()
+	_interaction_area.interact = Callable(self, "_on_interact")
+	_interaction_area.a_order = Callable(self, "_on_a_order")
+	_interaction_area.b_order = Callable(self, "_on_b_order")
+	_interaction_area.c_order = Callable(self, "_on_c_order")
+
+	_interaction_area.cancel_a_order = Callable(self, "_on_cancel_a_order")
+	_interaction_area.cancel_b_order = Callable(self, "_on_cancel_b_order")
+	_interaction_area.cancel_c_order = Callable(self, "_on_cancel_c_order")
+
+	_interaction_area.stair = Callable(self, "_on_stair")
+	_interaction_area.unfocus = Callable(self, "_on_unfocus")
+
+	_label.text = _description_text
+	_label.global_position = _interaction_area.global_position
+	_label.global_position.y -= 32
+	_label.global_position.x -= _label.size.x * 0.5
 	# set the location of the sound to the bridge location
-	_wood = 100
-	_buildSound1.position = position
+	_build_sound1.position = position
 
 func _on_p_timer_timeout() -> void:
 	_build()
@@ -29,15 +43,11 @@ func _on_p_timer_timeout() -> void:
 
 func _build() -> void:
 	if _a_villagers.size() + _b_villagers.size() + _c_villagers.size() == 0:
-		_effort = 0
-		# stop the sound
-		_buildSound1.stop()
+		_stop_production()
 		return
 	# play the build sound is not playing or is finished
-	if !_buildSound1.is_playing():
-		_buildSound1.play()
-
-		print("play build sound")
+	if !_build_sound1.is_playing():
+		_build_sound1.play()
 	var work = 0
 
 	if _a_villagers.size() > 0:
@@ -69,13 +79,15 @@ func _build() -> void:
 		_effort = 0
 		# consume resources
 		_label.hide()
-		if _wood > 0:
-			_wood -= 1
+		if _resources > 0:
+			_resources -= 1
 			_progress += 1
 			# if progres is odd build the scaffold
 			if _progress % 2 == 1:
 				_scaffold_sprite.region_rect = Rect2(_scaffold_sprite.region_rect.position, Vector2(_scaffold_sprite.region_rect.size.x + _section, _scaffold_sprite.region_rect.size.y))
 				_scaffold_sprite.offset.x += _section * 0.5
+				for vill in _a_villagers:
+					vill.new_far_distance(position.x + (_section))
 			# if progress is even build the bridge
 			if _progress % 2 == 0:
 				_bridge_sprite.region_rect = Rect2(_bridge_sprite.region_rect.position, Vector2(_bridge_sprite.region_rect.size.x + _section, _bridge_sprite.region_rect.size.y))
@@ -89,10 +101,19 @@ func _build() -> void:
 					_bridge_limit.shape.set_b(Vector2(_bridge_limit.shape.get_b().x + _section * 0.5, _bridge_limit.shape.get_b().y))
 					_bridge_floor.position.x += _section * 0.5
 					# move the sound position
-					_buildSound1.position.x += _section * 0.5
+					_build_sound1.position.x += _section * 0.5
 					# Move the villagers current far distnace to the right
-					for vill in _a_villagers:
-						vill.new_far_distance(position.x + (_section))
 
 			# print the work of resources produced
-		_production_timer.wait_time = 10
+		_production_timer.wait_time = 4
+
+func _stop_production() -> void:
+	_production_timer.stop()
+	_production_timer.wait_time = 10
+	_production_timer.stop()
+	_a_timer.stop()
+	_b_timer.stop()
+	_c_timer.stop()
+	_effort = 0
+	_can_cancel = true
+	_build_sound1.stop()

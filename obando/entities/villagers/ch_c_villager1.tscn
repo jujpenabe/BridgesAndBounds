@@ -206,7 +206,7 @@ script = ExtResource("1_b63ir")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
-animation = &"walking"
+animation = &"farming"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
