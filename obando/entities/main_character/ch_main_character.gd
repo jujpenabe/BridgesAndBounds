@@ -38,7 +38,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * _speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, _speed/15)
+		velocity.x = move_toward(velocity.x, 0, _speed/10)
 
 	move_and_slide()
 
@@ -57,13 +57,10 @@ func register_follower(vill: Villager) -> void:
 	match vill.type:
 		0:
 			type_a_followers.append(vill)
-			print("Registered follower of type A.")
 		1:
 			type_b_followers.append(vill)
-			print("Registered follower of type B.")
 		2:
 			type_c_followers.append(vill)
-			print("Registered follower of type C.")
 		_:
 			print("Error: Invalid follower type.")
 

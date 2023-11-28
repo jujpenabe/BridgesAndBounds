@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jxc2xvcf837c"]
+[gd_scene load_steps=27 format=3 uid="uid://jxc2xvcf837c"]
 
 [ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://obando/entities/main_character/ch_main_character.tscn" id="1_lf502"]
 [ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://obando/art/tiles/town_1.tres" id="2_ekmga"]
@@ -14,9 +14,18 @@
 [ext_resource type="Texture2D" uid="uid://d2ke0odsnonky" path="res://obando/art/background/bg_mountain_5.png" id="12_s4q64"]
 [ext_resource type="TileSet" uid="uid://co5jrke0yixdr" path="res://obando/art/tiles/town_2.tres" id="13_2xcpr"]
 [ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://obando/core/bridge/bridge.tscn" id="14_sxk35"]
+[ext_resource type="PackedScene" uid="uid://nh55bacy1vu3" path="res://obando/entities/villagers/ch_a_villager4.tscn" id="15_ar2ri"]
 [ext_resource type="PackedScene" uid="uid://d0vhq6j4vw3tk" path="res://obando/entities/villagers/ch_a_villager3.tscn" id="15_wyf5w"]
+[ext_resource type="PackedScene" uid="uid://d0e8ba8hyheph" path="res://obando/entities/villagers/ch_b_villager1.tscn" id="16_du481"]
 [ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://obando/entities/post/post.tscn" id="16_lnlhf"]
+[ext_resource type="PackedScene" uid="uid://b58vpsx22ex1p" path="res://obando/entities/villagers/ch_b_villager2.tscn" id="17_kx43f"]
 [ext_resource type="Texture2D" uid="uid://83nsjh67072g" path="res://obando/art/sprites_varied/sprite_workstation_wood.png" id="17_rqoxi"]
+[ext_resource type="PackedScene" uid="uid://c5yqm3v4e6ase" path="res://obando/entities/villagers/ch_b_villager3.tscn" id="18_y0cct"]
+[ext_resource type="PackedScene" uid="uid://xsg2vxvhnja5" path="res://obando/entities/villagers/ch_b_villager4.tscn" id="19_d1smt"]
+[ext_resource type="PackedScene" uid="uid://jcpbdq3nannx" path="res://obando/entities/villagers/ch_c_villager1.tscn" id="20_bxks2"]
+[ext_resource type="PackedScene" uid="uid://cqwlvurqjf54k" path="res://obando/entities/villagers/ch_c_villager2.tscn" id="21_d5iqs"]
+[ext_resource type="PackedScene" uid="uid://tyfbou8j1jy1" path="res://obando/entities/villagers/ch_c_villager3.tscn" id="22_d6hpw"]
+[ext_resource type="PackedScene" uid="uid://qc16p3pg2wk3" path="res://obando/entities/villagers/ch_c_villager4.tscn" id="23_3qc35"]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -204,25 +213,40 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(131077, 1966081, 0, 196613, 1966081, 1, 262149, 1966081, 2, 327685, 1966081, 3, 131078, 2031617, 0, 196614, 2031617, 1, 262150, 2031617, 2, 327686, 2031617, 3, 262157, 1703937, 2, 327693, 1703937, 3, 262166, 1703937, 2, 327702, 1703937, 3, 131102, 1835009, 0, 196638, 1835009, 1, 262174, 1835009, 2, 327710, 1835009, 3, 131103, 1900545, 0, 196639, 1900545, 1, 262175, 1900545, 2, 327711, 1900545, 3, 262181, 1769473, 2, 327717, 1769473, 3, 262188, 1769473, 2, 327724, 1769473, 3, 196584, 1835009, 5, 262120, 1835009, 6, 327656, 1835009, 7, 393192, 1835009, 8, 196585, 1900545, 5, 262121, 1900545, 6, 327657, 1900545, 7, 393193, 1900545, 8, 196586, 1703937, 5, 262122, 1703937, 6, 327658, 1703937, 7, 393194, 1703937, 8, 131051, 1769473, 4, 196587, 1769473, 5, 262123, 1769473, 6, 327659, 1769473, 7, 393195, 1769473, 8, 196588, 1966081, 5, 262124, 1966081, 6, 327660, 1966081, 7, 393196, 1966081, 8, 196589, 2031617, 5, 262125, 2031617, 6, 327661, 2031617, 7, 393197, 2031617, 8, 131054, 1703937, 4, 196590, 1703937, 5, 262126, 1703937, 6, 327662, 1703937, 7, 393198, 1703937, 8, 196591, 1769473, 5, 262127, 1769473, 6, 327663, 1769473, 7, 393199, 1769473, 8, 196592, 1703937, 5, 262128, 1703937, 6, 327664, 1703937, 7, 393200, 1703937, 8, 131050, 1703937, 4, 131055, 1769473, 4, 131056, 1703937, 4, 131057, 1769473, 4, 196593, 1769473, 5, 262129, 1769473, 6, 327665, 1769473, 7, 393201, 1769473, 8, 196594, 1966081, 5, 262130, 1966081, 6, 327666, 1966081, 7, 393202, 1966081, 8, 196595, 2031617, 5, 262131, 2031617, 6, 327667, 2031617, 7, 393203, 2031617, 8)
 
-[node name="Bridge" parent="." instance=ExtResource("14_sxk35")]
-position = Vector2(2663, 187)
-type = 3
-
-[node name="BridgeSprite" parent="Bridge" index="0"]
-position = Vector2(44, 26)
-scale = Vector2(0.5, 0.5)
-
-[node name="ScaffoldSprite" parent="Bridge" index="1"]
-position = Vector2(36, 24.81)
-scale = Vector2(0.5, 0.5)
-
-[node name="Label" parent="Bridge" index="4"]
-text = "BUILD THE BRIDGE"
-
 [node name="Villagers" type="Node" parent="."]
 
 [node name="Villager" parent="Villagers" instance=ExtResource("15_wyf5w")]
-position = Vector2(2218, 155)
+position = Vector2(2411, 155)
+
+[node name="Villager2" parent="Villagers" instance=ExtResource("15_wyf5w")]
+position = Vector2(2467, 142)
+
+[node name="Villager3" parent="Villagers" instance=ExtResource("15_ar2ri")]
+position = Vector2(2576, 152)
+
+[node name="Villager4" parent="Villagers" instance=ExtResource("16_du481")]
+position = Vector2(2177, 141)
+
+[node name="Villager5" parent="Villagers" instance=ExtResource("17_kx43f")]
+position = Vector2(2065, 130)
+
+[node name="Villager6" parent="Villagers" instance=ExtResource("18_y0cct")]
+position = Vector2(1674, 119)
+
+[node name="Villager7" parent="Villagers" instance=ExtResource("19_d1smt")]
+position = Vector2(1536, 107)
+
+[node name="Villager8" parent="Villagers" instance=ExtResource("20_bxks2")]
+position = Vector2(1411, 105)
+
+[node name="Villager9" parent="Villagers" instance=ExtResource("21_d5iqs")]
+position = Vector2(1300, 116)
+
+[node name="Villager10" parent="Villagers" instance=ExtResource("22_d6hpw")]
+position = Vector2(1207, 105)
+
+[node name="Villager11" parent="Villagers" instance=ExtResource("23_3qc35")]
+position = Vector2(1087, 113)
 
 [node name="Post" parent="." instance=ExtResource("16_lnlhf")]
 position = Vector2(2073, 159)
@@ -251,9 +275,23 @@ wait_time = 0.3
 [node name="CTimer" parent="Post" index="7"]
 wait_time = 0.3
 
+[node name="Bridge" parent="." instance=ExtResource("14_sxk35")]
+position = Vector2(2663, 187)
+
+[node name="BridgeSprite" parent="Bridge" index="0"]
+position = Vector2(44, 26)
+scale = Vector2(0.5, 0.5)
+
+[node name="ScaffoldSprite" parent="Bridge" index="1"]
+position = Vector2(36, 24.81)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" parent="Bridge" index="4"]
+text = "BUILD THE BRIDGE"
+
 [connection signal="timeout" from="Bridge/ATimer" to="Bridge" method="_on_a_timer_timeout"]
 [connection signal="timeout" from="Bridge/BTimer" to="Bridge" method="_on_b_timer_timeout"]
 [connection signal="timeout" from="Bridge/CTimer" to="Bridge" method="_on_c_timer_timeout"]
 
-[editable path="Bridge"]
 [editable path="Post"]
+[editable path="Bridge"]

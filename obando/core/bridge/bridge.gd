@@ -7,7 +7,7 @@ class_name Bridge
 @onready var _bridge_floor = %BridgeFloor
 
 # SFX
-@onready var _buildSoun1 = %BuildSound1
+@onready var _buildSound1 = %BuildSound1
 
 var _progress = 0
 
@@ -73,7 +73,7 @@ func _build() -> void:
 			if _progress % 2 == 0:
 				_bridge_sprite.region_rect = Rect2(_bridge_sprite.region_rect.position, Vector2(_bridge_sprite.region_rect.size.x + section, _bridge_sprite.region_rect.size.y))
 				_bridge_sprite.offset.x += section * 0.5
-				
+
 				# Move the scaffold left to the right
 				# random 50% thath the sprite will move
 				if _progress > 1 && randi() % 2:
