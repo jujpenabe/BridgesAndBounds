@@ -277,6 +277,7 @@ wait_time = 0.3
 
 [node name="Bridge" parent="." instance=ExtResource("14_sxk35")]
 position = Vector2(2663, 187)
+type = 3
 
 [node name="BridgeSprite" parent="Bridge" index="0"]
 position = Vector2(44, 26)
