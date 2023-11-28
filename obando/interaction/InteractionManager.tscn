@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmorw2shhsrgd"]
 
-[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="1_0w5dd"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/InteractionManager.gd" id="1_xqtrf"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="1_0w5dd"]
+[ext_resource type="Script" path="res://obando/interaction/InteractionManager.gd" id="1_xqtrf"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_xqtrf")

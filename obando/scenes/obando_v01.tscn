@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://jxc2xvcf837c"]
+[gd_scene load_steps=18 format=3 uid="uid://jxc2xvcf837c"]
 
 [ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://obando/entities/main_character/ch_main_character.tscn" id="1_lf502"]
 [ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://obando/art/tiles/town_1.tres" id="2_ekmga"]
@@ -15,19 +15,8 @@
 [ext_resource type="TileSet" uid="uid://co5jrke0yixdr" path="res://obando/art/tiles/town_2.tres" id="13_2xcpr"]
 [ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://obando/core/bridge/bridge.tscn" id="14_sxk35"]
 [ext_resource type="PackedScene" uid="uid://d0vhq6j4vw3tk" path="res://obando/entities/villagers/ch_a_villager3.tscn" id="15_wyf5w"]
-[ext_resource type="PackedScene" uid="uid://nh55bacy1vu3" path="res://obando/entities/villagers/ch_a_villager4.tscn" id="16_j7gfg"]
 [ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://obando/entities/post/post.tscn" id="16_lnlhf"]
-[ext_resource type="PackedScene" uid="uid://d0e8ba8hyheph" path="res://obando/entities/villagers/ch_b_villager1.tscn" id="17_82m4r"]
 [ext_resource type="Texture2D" uid="uid://83nsjh67072g" path="res://obando/art/sprites_varied/sprite_workstation_wood.png" id="17_rqoxi"]
-[ext_resource type="PackedScene" uid="uid://coar745lkp6ww" path="res://obando/entities/villagers/ch_a_villager1.tscn" id="18_7gcs7"]
-[ext_resource type="PackedScene" uid="uid://b58vpsx22ex1p" path="res://obando/entities/villagers/ch_b_villager2.tscn" id="18_ndrnk"]
-[ext_resource type="PackedScene" uid="uid://c5yqm3v4e6ase" path="res://obando/entities/villagers/ch_b_villager3.tscn" id="19_bnw5i"]
-[ext_resource type="PackedScene" uid="uid://63r27t00brul" path="res://obando/entities/villagers/ch_a_villager2.tscn" id="19_tojxo"]
-[ext_resource type="PackedScene" uid="uid://xsg2vxvhnja5" path="res://obando/entities/villagers/ch_b_villager4.tscn" id="20_c4ju2"]
-[ext_resource type="PackedScene" uid="uid://jcpbdq3nannx" path="res://obando/entities/villagers/ch_c_villager1.tscn" id="21_xnbml"]
-[ext_resource type="PackedScene" uid="uid://cqwlvurqjf54k" path="res://obando/entities/villagers/ch_c_villager2.tscn" id="22_n1ntl"]
-[ext_resource type="PackedScene" uid="uid://tyfbou8j1jy1" path="res://obando/entities/villagers/ch_c_villager3.tscn" id="23_8xop3"]
-[ext_resource type="PackedScene" uid="uid://qc16p3pg2wk3" path="res://obando/entities/villagers/ch_c_villager4.tscn" id="24_6k44t"]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -234,39 +223,6 @@ text = "BUILD THE BRIDGE"
 
 [node name="Villager" parent="Villagers" instance=ExtResource("15_wyf5w")]
 position = Vector2(2218, 155)
-
-[node name="Villager2" parent="Villagers" instance=ExtResource("16_j7gfg")]
-position = Vector2(2218, 155)
-
-[node name="Villager3" parent="Villagers" instance=ExtResource("17_82m4r")]
-position = Vector2(2218, 155)
-
-[node name="Villager4" parent="Villagers" instance=ExtResource("18_ndrnk")]
-position = Vector2(2218, 155)
-
-[node name="Villager5" parent="Villagers" instance=ExtResource("19_bnw5i")]
-position = Vector2(2218, 155)
-
-[node name="Villager6" parent="Villagers" instance=ExtResource("20_c4ju2")]
-position = Vector2(2218, 155)
-
-[node name="Villager7" parent="Villagers" instance=ExtResource("21_xnbml")]
-position = Vector2(2218, 155)
-
-[node name="Villager8" parent="Villagers" instance=ExtResource("22_n1ntl")]
-position = Vector2(2218, 155)
-
-[node name="Villager9" parent="Villagers" instance=ExtResource("23_8xop3")]
-position = Vector2(2218, 155)
-
-[node name="Villager10" parent="Villagers" instance=ExtResource("24_6k44t")]
-position = Vector2(2218, 155)
-
-[node name="Villager11" parent="Villagers" instance=ExtResource("18_7gcs7")]
-position = Vector2(2485, 164)
-
-[node name="Villager12" parent="Villagers" instance=ExtResource("19_tojxo")]
-position = Vector2(2542, 165)
 
 [node name="Post" parent="." instance=ExtResource("16_lnlhf")]
 position = Vector2(2073, 159)

@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="obando"
-run/main_scene="res://bridges_and_bounds/scenes/obando_v01.tscn"
+run/main_scene="res://obando/scenes/obando_v01.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://bridges_and_bounds/icon.svg"
 
 [autoload]
 
-InteractionManager="*res://bridges_and_bounds/interaction/InteractionManager.tscn"
-MainTheme="*res://bridges_and_bounds/art/music/main_theme/main_theme.tscn"
+MainTheme="*res://obando/art/music/main_theme/main_theme.tscn"
+InteractionManager="*res://obando/interaction/InteractionManager.tscn"
 
 [display]
 
