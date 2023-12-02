@@ -147,47 +147,38 @@ position_smoothing_enabled = true
 [node name="Villager" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2090, 83)
-type = 1
 
 [node name="Villager2" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2134, 95)
-type = 1
 
 [node name="Villager3" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2064, 93)
-type = 1
 
 [node name="Villager4" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(1988, 90)
-type = 1
 
 [node name="Villager5" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2041, 89)
-type = 1
 
 [node name="Villager6" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(1931, 89)
-type = 1
 
 [node name="Villager7" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(1908, 89)
-type = 2
 
 [node name="Villager8" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2183, 85)
-type = 2
 
 [node name="Villager9" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2
 position = Vector2(2524, 82)
-type = 2
 
 [node name="Villager10" parent="Villagers" instance=ExtResource("11_l416p")]
 z_index = 2

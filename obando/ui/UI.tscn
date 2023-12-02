@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://cre4snpfsasjn"]
+
+[ext_resource type="Texture2D" uid="uid://0y1pd1t2rk13" path="res://obando/ui/sprite_ui_1.png" id="1_eba6x"]
+[ext_resource type="Texture2D" uid="uid://0ib777313ji2" path="res://obando/ui/numbers.png" id="2_r8ykw"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 176.0
+offset_right = 384.0
+offset_bottom = 216.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_eba6x")
+
+[node name="Sleeping" type="HBoxContainer" parent="Control/TextureRect"]
+modulate = Color(0, 0.521569, 1, 0.968627)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 68.07
+offset_top = -4.445
+offset_right = 82.07
+offset_bottom = -4.445
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/Sleeping"]
+modulate = Color(1, 1, 1, 0.968627)
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/Sleeping"]
+modulate = Color(1, 1, 1, 0.968627)
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="TotalUnits" type="HBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 34.92
+offset_top = 0.38
+offset_right = 59.1048
+offset_bottom = 0.38
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="Total" type="HBoxContainer" parent="Control/TextureRect/TotalUnits"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Total"]
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Total"]
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Current" type="HBoxContainer" parent="Control/TextureRect/TotalUnits"]
+modulate = Color(0.407843, 0.407843, 0.407843, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Current"]
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Current"]
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="UnitClasses" type="HBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -39.965
+offset_right = 22.315
+grow_horizontal = 0
+
+[node name="Red" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(18.555, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Red"]
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Red"]
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Blue" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
+modulate = Color(0, 0, 0, 1)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Blue"]
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Blue"]
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Green" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(19.145, 0)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Green"]
+position = Vector2(-107, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
+
+[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Green"]
+position = Vector2(-101, 30)
+texture = ExtResource("2_r8ykw")
+hframes = 10
