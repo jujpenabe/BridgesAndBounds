@@ -266,15 +266,6 @@ offset_right = 76.5
 offset_bottom = -61.0
 text = "ASSIGN VILLAGERS TO SHOP WOOD"
 
-[node name="ATimer" parent="Post" index="5"]
-wait_time = 0.3
-
-[node name="BTimer" parent="Post" index="6"]
-wait_time = 0.3
-
-[node name="CTimer" parent="Post" index="7"]
-wait_time = 0.3
-
 [node name="Bridge" parent="." instance=ExtResource("14_sxk35")]
 position = Vector2(2663, 187)
 type = 3
