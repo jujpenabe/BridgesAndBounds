@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dqlnijj213fir"]
+[gd_scene load_steps=20 format=3 uid="uid://dqlnijj213fir"]
 
 [ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://obando/art/tiles/town_1.tres" id="1_pjy7u"]
 [ext_resource type="Texture2D" uid="uid://b4loaji7ypegc" path="res://obando/art/background/bg_sky.png" id="2_b3msu"]
@@ -15,17 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://obando/entities/main_character/ch_main_character.tscn" id="13_0ftnt"]
 [ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://obando/core/bridge/bridge.tscn" id="14_d1j5d"]
 [ext_resource type="PackedScene" uid="uid://coar745lkp6ww" path="res://obando/entities/villagers/ch_a_villager1.tscn" id="15_ultj8"]
-[ext_resource type="PackedScene" uid="uid://63r27t00brul" path="res://obando/entities/villagers/ch_a_villager2.tscn" id="16_bpck6"]
-[ext_resource type="PackedScene" uid="uid://d0vhq6j4vw3tk" path="res://obando/entities/villagers/ch_a_villager3.tscn" id="17_1vlue"]
-[ext_resource type="PackedScene" uid="uid://nh55bacy1vu3" path="res://obando/entities/villagers/ch_a_villager4.tscn" id="18_usqbw"]
-[ext_resource type="PackedScene" uid="uid://d0e8ba8hyheph" path="res://obando/entities/villagers/ch_b_villager1.tscn" id="19_xthi7"]
-[ext_resource type="PackedScene" uid="uid://b58vpsx22ex1p" path="res://obando/entities/villagers/ch_b_villager2.tscn" id="20_s00b3"]
-[ext_resource type="PackedScene" uid="uid://c5yqm3v4e6ase" path="res://obando/entities/villagers/ch_b_villager3.tscn" id="21_kloan"]
-[ext_resource type="PackedScene" uid="uid://xsg2vxvhnja5" path="res://obando/entities/villagers/ch_b_villager4.tscn" id="22_qb71t"]
-[ext_resource type="PackedScene" uid="uid://jcpbdq3nannx" path="res://obando/entities/villagers/ch_c_villager1.tscn" id="23_gvw7w"]
-[ext_resource type="PackedScene" uid="uid://cqwlvurqjf54k" path="res://obando/entities/villagers/ch_c_villager2.tscn" id="24_y1poy"]
-[ext_resource type="PackedScene" uid="uid://tyfbou8j1jy1" path="res://obando/entities/villagers/ch_c_villager3.tscn" id="25_3kxwi"]
-[ext_resource type="PackedScene" uid="uid://qc16p3pg2wk3" path="res://obando/entities/villagers/ch_c_villager4.tscn" id="26_h67v3"]
 [ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://obando/entities/post/post.tscn" id="27_dfe22"]
 [ext_resource type="Texture2D" uid="uid://c677lj146bjmd" path="res://obando/art/sprites_varied/sprite_deposit_cob.png" id="28_4bpud"]
 [ext_resource type="Texture2D" uid="uid://b10sj1qq1gl84" path="res://obando/art/sprites_varied/sprite_deposit_food.png" id="29_mn0yg"]
@@ -213,58 +202,6 @@ text = "BUILD THE BRIDGE"
 
 [node name="Villagers" type="Node" parent="."]
 
-[node name="Villager" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1550, 171)
-_speed = 20
-
-[node name="Villager2" parent="Villagers" instance=ExtResource("16_bpck6")]
-position = Vector2(1550, 171)
-_speed = 20
-
-[node name="Villager3" parent="Villagers" instance=ExtResource("17_1vlue")]
-position = Vector2(1550, 171)
-_speed = 20
-
-[node name="Villager4" parent="Villagers" instance=ExtResource("18_usqbw")]
-position = Vector2(1550, 171)
-_speed = 20
-
-[node name="Villager5" parent="Villagers" instance=ExtResource("19_xthi7")]
-position = Vector2(1711, 164)
-type = 1
-
-[node name="Villager6" parent="Villagers" instance=ExtResource("20_s00b3")]
-position = Vector2(1711, 164)
-type = 1
-
-[node name="Villager7" parent="Villagers" instance=ExtResource("21_kloan")]
-position = Vector2(1711, 164)
-type = 1
-
-[node name="Villager8" parent="Villagers" instance=ExtResource("22_qb71t")]
-position = Vector2(1711, 164)
-type = 1
-
-[node name="Villager9" parent="Villagers" instance=ExtResource("23_gvw7w")]
-position = Vector2(1836, 162)
-type = 2
-_speed = 35
-
-[node name="Villager10" parent="Villagers" instance=ExtResource("24_y1poy")]
-position = Vector2(1836, 162)
-type = 2
-_speed = 35
-
-[node name="Villager11" parent="Villagers" instance=ExtResource("25_3kxwi")]
-position = Vector2(1836, 162)
-type = 2
-_speed = 35
-
-[node name="Villager12" parent="Villagers" instance=ExtResource("26_h67v3")]
-position = Vector2(1836, 162)
-type = 2
-_speed = 35
-
 [node name="Farming" parent="." instance=ExtResource("27_dfe22")]
 z_index = 3
 position = Vector2(2227, 176)
@@ -296,6 +233,53 @@ position = Vector2(-655, 176)
 _facade = ExtResource("30_okw0d")
 _description_text = "chop to get wood"
 _max_resources = 10
+
+[node name="Villager" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2425, 163)
+
+[node name="Villager2" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2361, 165)
+_sprite_2d_index = 1
+
+[node name="Villager3" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2309, 159)
+_sprite_2d_index = 2
+
+[node name="Villager4" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2236, 165)
+_sprite_2d_index = 3
+
+[node name="Villager5" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2179, 165)
+_sprite_2d_index = 4
+
+[node name="Villager6" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2115, 167)
+_sprite_2d_index = 5
+
+[node name="Villager7" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(2063, 161)
+_sprite_2d_index = 6
+
+[node name="Villager8" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(1990, 167)
+_sprite_2d_index = 7
+
+[node name="Villager9" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(1948, 166)
+_sprite_2d_index = 8
+
+[node name="Villager10" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(1884, 168)
+_sprite_2d_index = 9
+
+[node name="Villager11" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(1832, 162)
+_sprite_2d_index = 10
+
+[node name="Villager12" parent="." instance=ExtResource("15_ultj8")]
+position = Vector2(1759, 168)
+_sprite_2d_index = 11
 
 [connection signal="timeout" from="Bridge/ATimer" to="Bridge" method="_on_a_timer_timeout"]
 [connection signal="timeout" from="Bridge/BTimer" to="Bridge" method="_on_b_timer_timeout"]

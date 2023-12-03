@@ -9,6 +9,16 @@ enum {
 }
 @export_enum("A", "B", "C",) var type: int = 0;
 @export var _speed = 30;
+@export_range (0, 11) var _sprite_2d_index: int;
+
+@onready var _rich_text_label = %RichTextLabel;
+@onready var sprites_2d: Array[AnimatedSprite2D]
+@onready var interaction_area = %InteractionArea
+@onready var _villager_sprite_animations = %VillagerSpriteAnimations
+@onready var _player = get_tree().get_first_node_in_group("player");
+@onready var _walking_sound_pool: SoundPool2D = %WalkingSoundPool;
+
+var _sprite_2d: AnimatedSprite2D = null;
 var _current_state = IDLE;
 var _current_dir = Vector2.RIGHT;
 var _far_distance = 0;
@@ -16,10 +26,6 @@ var _is_following = false;
 var _is_working = false;
 var _current_work:int = 0;
 
-@onready var _rich_text_label = %RichTextLabel;
-@onready var sprite_2d = $Sprite2D
-@onready var interaction_area = $InteractionArea
-@onready var _player = get_tree().get_first_node_in_group("player");
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,33 +36,27 @@ func _ready() -> void:
 	interaction_area.stair = Callable(self, "_on_stair");
 	interaction_area.unfocus = Callable(self, "_on_unfocus");
 	_rich_text_label.hide();
+	for child in _villager_sprite_animations.get_children():
+		if child is AnimatedSprite2D:
+			sprites_2d.append(child);
+
+	# set the sprite_2d to the first sprite in the array.
+	_sprite_2d = sprites_2d[_sprite_2d_index];
+	_sprite_2d.show();
+	# add the sprite_2d to the root node.
 	randomize();
 
 func _process(delta: float) -> void:
 	match _current_state:
 		IDLE:
-			sprite_2d.animation = "idle"
+			_sprite_2d.animation = "idle"
 		NEW_DIR:
 			if _is_following:
 				# If the player is following, set the current state to NEW_DIR.
 				#check if the player is to the left or right of the NPC.
-				if _player.position.x >= position.x + 100:
-					sprite_2d.flip_h = false;
+				if _player.position > position:
 					_current_dir = Vector2.RIGHT;
-				elif _player.position.x <= position.x - 100:
-					sprite_2d.flip_h = true;
-					_current_dir = Vector2.LEFT;
-				elif _player.position.x < position.x + 100 && _player.position.x >= position.x + 25:
-					sprite_2d.flip_h = false;
-					_current_dir = Vector2.RIGHT;
-				elif _player.position.x > position.x - 100 && _player.position.x <= position.x - 25:
-					sprite_2d.flip_h = true;
-					_current_dir = Vector2.LEFT;
-				elif _player.position.x < position.x + 25 && _player.position.x > 0:
-					sprite_2d.flip_h = false;
-					_current_dir = Vector2.RIGHT;
-				elif _player.position.x > position.x - 25 && _player.position.x <=0:
-					sprite_2d.flip_h = true;
+				elif _player.position < position:
 					_current_dir = Vector2.LEFT;
 				else:
 					pass;
@@ -75,9 +75,9 @@ func _process(delta: float) -> void:
 					_current_dir = _choose(array);
 			# If the current direction is Vector2.RIGHT, set the sprite's flip_h to false.
 			if _current_dir == Vector2.RIGHT:
-				sprite_2d.flip_h = false;
+				_sprite_2d.flip_h = false;
 			else:
-				sprite_2d.flip_h = true;
+				_sprite_2d.flip_h = true;
 			_current_state = MOVE;
 		MOVE:
 			if _is_following:
@@ -108,13 +108,13 @@ func _process(delta: float) -> void:
 		WORKING:
 			match _current_work:
 				0:
-					sprite_2d.animation = "chopping"
+					_sprite_2d.animation = "chopping"
 				1:
-					sprite_2d.animation = "farming"
+					_sprite_2d.animation = "farming"
 				2:
-					sprite_2d.animation = "cooking"
+					_sprite_2d.animation = "cooking"
 				3:
-					sprite_2d.animation = "building"
+					_sprite_2d.animation = "building"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -126,7 +126,8 @@ func _move(delta):
 	var _delta = _current_dir * _speed * delta;
 	_far_distance += _delta.x;
 	position += _delta;
-	sprite_2d.animation = "walking"
+	_sprite_2d.animation = "walking"
+	_play_footsp_sounds();
 
 func _choose(array):
 	array.shuffle();
@@ -172,9 +173,9 @@ func _on_timer_timeout() -> void:
 		MOVE:
 			if _is_following:
 				if _player.position.x >= position.x + 75 || _player.position.x <= position.x - 75:
-					_current_state = _choose([NEW_DIR, NEW_DIR, NEW_DIR, IDLE]);
+					_current_state = _choose([NEW_DIR, NEW_DIR, NEW_DIR, NEW_DIR, IDLE]);
 				else:
-					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE]);
+					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE, IDLE]);
 				if _current_state == NEW_DIR:
 					$Timer.wait_time = _choose([0.2, 0.2, 0.4]);
 				elif _current_state == IDLE:
@@ -227,7 +228,7 @@ func assign_to_post(post) -> void:
 	# Add to the pool of the pos
 	post.add_to_pool(self);
 	# set the animation based on the type of the post.
-	_current_work = post.type;	
+	_current_work = post.type;
 
 func _on_interact() -> void:
 	# Add to the player's followers.
@@ -272,3 +273,7 @@ func follow_player() -> void:
 
 func new_far_distance(point: int) -> void:
 	_far_distance = position.x - point;
+
+func _play_footsp_sounds() -> void:
+	_walking_sound_pool.play_random_sound(-18);
+	_walking_sound_pool.set_pool_position(global_position);

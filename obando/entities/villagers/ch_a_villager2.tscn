@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://63r27t00brul"]
+[gd_scene load_steps=30 format=3 uid="uid://cd0ujsytepw8i"]
 
 [ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_rxwrk"]
 [ext_resource type="Texture2D" uid="uid://7abla2s5ly5l" path="res://obando/entities/villagers/villager_a_2.png" id="3_5cuys"]
@@ -204,6 +204,7 @@ collision_layer = 4
 script = ExtResource("1_rxwrk")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
 animation = &"walking"
@@ -242,8 +243,6 @@ theme_override_fonts/normal_font = ExtResource("4_wrmyb")
 bbcode_enabled = true
 text = "[S]"
 autowrap_mode = 0
-
-[node name="SoundAxeHit" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]

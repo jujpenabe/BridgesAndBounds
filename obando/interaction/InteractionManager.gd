@@ -2,17 +2,19 @@ extends Node2D
 
 
 @onready var _player = get_tree().get_first_node_in_group("player");
-@onready var _rich_text_label = %RichTextLabel;
+@onready var _followers_banner: TextureRect = %FollowersBanner;
 @onready var _timer = %Timer;
 
 const base_text = ""
 
 var active_areas = [];
 var can_register = true;
+var _followers_banner_init_pos: Vector2;
 
 # on ready
 func _ready():
-	_rich_text_label.hide();
+	_followers_banner.hide();
+	_followers_banner_init_pos = _followers_banner.position;
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area);
@@ -22,15 +24,14 @@ func unregister_area(area: InteractionArea):
 	var index = active_areas.find(area);
 	if index != -1:
 		active_areas.remove_at(index);
-	# if there are no more areas, hide the rich text label
+	# if there are no more areas, hide the banner
 	if active_areas.size() == 0:
 		_timer.start(2);
 
 func _process(delta):
-	_display_followers();
 	active_areas.sort_custom(_sort_by_distance_to_player);
 	if active_areas.size() > 0:
-		_rich_text_label.show();
+		_display_followers();
 		active_areas.front().stair.call();
 		# call the unfocus method on the remaining areas
 		for i in range(1, active_areas.size()):
@@ -73,11 +74,21 @@ func assign_follower_from_post(vill: Villager):
 	_player.register_follower(vill);
 
 func _display_followers() -> void:
-	_rich_text_label.bbcode_text = "[center] Pacillences: \n" + "[color=red] A  [/color]" + str(_player.type_a_followers.size())  + " [color=green] B [/color]" + str(_player.type_b_followers.size()) + " [color=blue] C [/color]" + str(_player.type_c_followers.size())+"[/center]";
-	_rich_text_label.global_position = _player.global_position;
-	_rich_text_label.global_position.y -= 128;
-	_rich_text_label.global_position.x -= _rich_text_label.size.x / 2;
+	# if is not visible, show it
+	if not _followers_banner.visible:
+		_followers_banner.show();
+		var tween = create_tween().set_parallel(true);
+		tween.tween_property(_followers_banner, "modulate", Color.WHITE, 0.2)
+		tween.tween_property(_followers_banner, "position", _followers_banner_init_pos, 0.2)
+
+func _hide_followers() -> void:
+	if _followers_banner.visible:
+		var tween = create_tween().set_parallel(true);
+		tween.tween_property(_followers_banner, "modulate", Color.TRANSPARENT, 0.4)
+		tween.tween_property(_followers_banner, "position", _followers_banner.position + Vector2(0, _followers_banner.size.y), 0.4)
+		tween.chain().tween_callback(_followers_banner.hide)
+		_timer.stop();
 
 func _on_timer_timeout():
-	_rich_text_label.hide();
-	_timer.stop();
+	# fade in the followers banner
+	_hide_followers();

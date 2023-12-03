@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://tyfbou8j1jy1"]
+[gd_scene load_steps=31 format=3 uid="uid://cl0vx6ogx0vwg"]
 
 [ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_uavht"]
 [ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_pm86x"]
@@ -213,7 +213,7 @@ script = ExtResource("1_uavht")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
-animation = &"cooking"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

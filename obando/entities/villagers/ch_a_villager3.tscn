@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0vhq6j4vw3tk"]
+[gd_scene load_steps=30 format=3 uid="uid://3xlhije8iald"]
 
 [ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_n7py4"]
 [ext_resource type="Texture2D" uid="uid://b78x0tv3jpuny" path="res://obando/entities/villagers/villager_a_3.png" id="2_k5er7"]
@@ -204,6 +204,7 @@ collision_layer = 4
 script = ExtResource("1_n7py4")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2jo82")
 animation = &"walking"

@@ -1,12 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmorw2shhsrgd"]
+[gd_scene load_steps=4 format=3 uid="uid://dmorw2shhsrgd"]
 
 [ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="1_0w5dd"]
 [ext_resource type="Script" path="res://obando/interaction/InteractionManager.gd" id="1_xqtrf"]
+[ext_resource type="Texture2D" uid="uid://0y1pd1t2rk13" path="res://obando/ui/sprite_ui_1.png" id="2_wurl6"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_xqtrf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FollowersBanner" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_wurl6")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = 10
 offset_right = 200.0
@@ -15,11 +36,7 @@ size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_fonts/normal_font = ExtResource("1_0w5dd")
 bbcode_enabled = true
-text = "Bottom Text"
+text = "1234568789"
 autowrap_mode = 0
-
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

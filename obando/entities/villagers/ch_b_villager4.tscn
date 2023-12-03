@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://xsg2vxvhnja5"]
+[gd_scene load_steps=30 format=3 uid="uid://cwl531kss7uhx"]
 
 [ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_2spl5"]
 [ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_d0vvu"]
