@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7xtuutekvlr3"]
+
+[ext_resource type="Script" path="res://obando/core/sound/sound_queue.gd" id="1_hfbu7"]
+
+[node name="SoundQueue" type="Node"]
+script = ExtResource("1_hfbu7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

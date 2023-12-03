@@ -1,8 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://bb8owqvksg3r2"]
+[gd_scene load_steps=41 format=3 uid="uid://bb8owqvksg3r2"]
 
 [ext_resource type="Script" path="res://obando/entities/main_character/ch_main_character.gd" id="1_s5xp8"]
 [ext_resource type="Texture2D" uid="uid://cxwn4mqi2da3e" path="res://obando/entities/main_character/mount.png" id="2_gqoqa"]
 [ext_resource type="Texture2D" uid="uid://bsod4pripi422" path="res://obando/entities/main_character/main_character.png" id="2_jk1wn"]
+[ext_resource type="Script" path="res://obando/core/sound/sound_pool.gd" id="4_nfygg"]
+[ext_resource type="Script" path="res://obando/core/sound/sound_queue.gd" id="5_xsq5d"]
+[ext_resource type="AudioStream" uid="uid://bcery51m7ikh8" path="res://obando/effects/FS_Concrete_01.wav" id="6_yd8o4"]
+[ext_resource type="AudioStream" uid="uid://nureyjov4ks8" path="res://obando/effects/FS_Concrete_02.wav" id="7_smt73"]
+[ext_resource type="AudioStream" uid="uid://uuodyan3vuir" path="res://obando/effects/FS_Concrete_03.wav" id="8_cyahf"]
+[ext_resource type="AudioStream" uid="uid://bi0g74in6bgkn" path="res://obando/effects/FS_Concrete_04.wav" id="9_o8mje"]
+[ext_resource type="AudioStream" uid="uid://bfnyeqkdr3ik8" path="res://obando/effects/FS_Concrete_05.wav" id="10_i7xi3"]
+[ext_resource type="AudioStream" uid="uid://cdk6kp0sjvkju" path="res://obando/effects/FS_Concrete_06.wav" id="11_qpaci"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ujw"]
 atlas = ExtResource("2_gqoqa")
@@ -241,3 +249,43 @@ position = Vector2(1, 0)
 rotation = 1.5708
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_xl1b1")
+
+[node name="SoundPool" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_nfygg")
+
+[node name="SoundQueue" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue"]
+stream = ExtResource("6_yd8o4")
+
+[node name="SoundQueue2" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue2"]
+stream = ExtResource("7_smt73")
+
+[node name="SoundQueue3" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue3"]
+stream = ExtResource("8_cyahf")
+
+[node name="SoundQueue4" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue4"]
+stream = ExtResource("9_o8mje")
+
+[node name="SoundQueue5" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue5"]
+stream = ExtResource("10_i7xi3")
+
+[node name="SoundQueue6" type="Node" parent="SoundPool"]
+script = ExtResource("5_xsq5d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool/SoundQueue6"]
+stream = ExtResource("11_qpaci")

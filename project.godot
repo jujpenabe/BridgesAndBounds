@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="obando"
-run/main_scene="res://obando/scenes/obando_0.1.1_alpha.tscn"
+run/main_scene="res://obando/scenes/obando_0.1.1_alpha4.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://obando/icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://obando/icon.svg"
 
 MainTheme="*res://obando/art/music/main_theme/main_theme.tscn"
 InteractionManager="*res://obando/interaction/InteractionManager.tscn"
+SoundManager="*res://obando/core/sound/sound_manager.tscn"
 
 [display]
 

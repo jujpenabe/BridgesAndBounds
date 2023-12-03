@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddav65gn1b6wm"]
+
+[ext_resource type="Script" path="res://obando/core/sound/sound_pool.gd" id="1_fo74s"]
+
+[node name="SoundPool" type="Node"]
+script = ExtResource("1_fo74s")

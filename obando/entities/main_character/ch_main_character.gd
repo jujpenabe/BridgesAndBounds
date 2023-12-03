@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var _speed = 100.0
+@onready var _sound_pool: SoundPool = %SoundPool
 @onready var _main_character = %Main
 @onready var _mount = %Mount
 # get reference of the camera
@@ -43,10 +44,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 	var isLeft = velocity.x < 0;
-	# if velocity is 0, keep the last direction
 	if (velocity.x != 0):
 		_main_character.flip_h = isLeft;
 		_mount.flip_h = isLeft;
+		_play_footstep_sound();
 		if (isLeft):
 			_mount.offset.x = -6;
 		else:
@@ -83,3 +84,6 @@ func assign_followers(type: int, post: Post) -> void:
 			type_c_followers.pop_front().assign_to_post(post)
 		_:
 			print("Error: Invalid follower type.")
+
+func _play_footstep_sound() -> void:
+	_sound_pool.play_random_sound()
