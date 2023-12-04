@@ -23,8 +23,8 @@ var _a_villagers: Array = []
 var _b_villagers: Array = []
 var _c_villagers: Array = []
 
-
-
+var _random: RandomNumberGenerator = RandomNumberGenerator.new()
+var _offset: int = 0
 var _effort = 0
 var _can_cancel = true
 var _type_text = ""
@@ -62,7 +62,7 @@ func _ready() -> void:
 		2:
 			_type_text = "Food"
 		3:
-			_type_text = ""	
+			_type_text = ""
 	_label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,6 +75,18 @@ func add_to_pool(vill: Villager) -> void:
 	# start the production timer if it is not running
 	if _production_timer.is_stopped():
 		_production_timer.start(2)
+	# update the far distance of the villager
+	vill.set_far_distance(position.x + _offset)
+	# move the villager to the corresponding post
+	match type:
+		0:
+			vill.set_sprite_position(Vector2(0, - 32), 0.6, 2)
+		1:
+			vill.set_sprite_position(Vector2(0, - 16), 0.6, 2)
+		2:
+			vill.set_sprite_position(Vector2(0, - 16), 0.6, 2)
+		3:
+			vill.set_sprite_position(Vector2(0, _random.randi_range(-4,4)), 2)
 	match vill.type:
 		0:
 			_a_villagers.append(vill)
@@ -198,7 +210,7 @@ func _produce() -> void:
 				work += 1
 
 	_effort += work
-	
+
 	if _effort >= _max_effort:
 		# append a new item to the lots array and spawn a notification above the post
 		# to notify the player that the post produced a new resource, the sound is louder when the post is full
@@ -214,7 +226,7 @@ func _produce() -> void:
 			_label.global_position.x -= _label.size.x * 0.5
 			_label.text = "+1 "
 			_label.show()
-		
+
 		# check if the resources are empty, half full or full and move the region rect +/- 32 pixels accordingly
 		# if the resources are full play a sound
 		# if the resources are empty play a sound
@@ -230,7 +242,7 @@ func _produce() -> void:
 			_sprite.region_rect = Rect2(64, 0, 32, 32)
 		# reset the progress to 0
 		_production_timer.wait_time = 1
-		
+
 	else:
 		_label.hide()
 		_production_timer.wait_time = 5

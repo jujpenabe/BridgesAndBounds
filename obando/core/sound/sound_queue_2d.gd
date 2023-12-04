@@ -4,6 +4,7 @@ class_name SoundQueue2D
 
 var _next:int = 0
 var _current_volume:float = 0
+var _current_pitch:float = 1
 var _current_position:Vector2 = Vector2(0,0)
 var _is_playing:bool = false
 # create empty array list of AudioStreamPlayer "_audioStreamPlayers2D"
@@ -44,6 +45,8 @@ func play_sound() -> void:
 	if !_audioStreamPlayers2D[_next].is_playing():
 		# change the volume of the next audio stream player
 		_audioStreamPlayers2D[_next+1].volume_db = _current_volume
+		# change the pitch of the next audio stream player
+		_audioStreamPlayers2D[_next+1].pitch_scale = _current_pitch
 		# play next+1 audio stream player
 		_audioStreamPlayers2D[_next+1].play()
 		# set position
@@ -57,6 +60,10 @@ func is_queue_playing() -> bool:
 func set_volume_db(volume_db:float = 0) -> void:
 	_current_volume = volume_db
 	_audioStreamPlayers2D[_next].volume_db = volume_db
+
+func set_pitch_scale(pitch:float = 1) -> void:
+	_current_pitch = pitch
+	_audioStreamPlayers2D[_next].pitch_scale = pitch
 
 func set_new_position(pos:Vector2) -> void:
 	_current_position = pos

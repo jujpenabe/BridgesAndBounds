@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bb8owqvksg3r2"]
+[gd_scene load_steps=45 format=3 uid="uid://bb8owqvksg3r2"]
 
 [ext_resource type="Script" path="res://obando/entities/main_character/ch_main_character.gd" id="1_s5xp8"]
 [ext_resource type="Texture2D" uid="uid://cxwn4mqi2da3e" path="res://obando/entities/main_character/mount.png" id="2_gqoqa"]
@@ -107,6 +107,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_o4k0t")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o4k0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljk87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljk87")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ljk87")
 }],
 "loop": true,
@@ -153,6 +162,22 @@ region = Rect2(64, 64, 32, 32)
 atlas = ExtResource("2_jk1wn")
 region = Rect2(96, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xbl4"]
+atlas = ExtResource("2_jk1wn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuhws"]
+atlas = ExtResource("2_jk1wn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmj20"]
+atlas = ExtResource("2_jk1wn")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uxhi"]
+atlas = ExtResource("2_jk1wn")
+region = Rect2(96, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_glul7"]
 atlas = ExtResource("2_jk1wn")
 region = Rect2(0, 0, 32, 32)
@@ -198,6 +223,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6xbl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuhws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmj20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uxhi")
+}],
+"loop": true,
+"name": &"order",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_glul7")
 }, {
 "duration": 1.0,
@@ -226,6 +268,7 @@ height = 11.3333
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_s5xp8")
 
 [node name="Mount" type="AnimatedSprite2D" parent="."]
@@ -234,6 +277,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kskbl")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.051819
 offset = Vector2(6, 0)
 
 [node name="Main" type="AnimatedSprite2D" parent="Mount"]
@@ -250,42 +294,47 @@ rotation = 1.5708
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_xl1b1")
 
-[node name="SoundPool2D" type="Node2D" parent="."]
+[node name="OrderTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="WalkingSoundPool" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_5gcu5")
 
-[node name="SoundQueue2D" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D"]
 stream = ExtResource("6_vto6x")
 
-[node name="SoundQueue2D2" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D2" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D2"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D2"]
 stream = ExtResource("7_mf0jn")
 
-[node name="SoundQueue2D3" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D3" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D3"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D3"]
 stream = ExtResource("8_5nijq")
 
-[node name="SoundQueue2D4" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D4" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D4"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D4"]
 stream = ExtResource("9_1k8lc")
 
-[node name="SoundQueue2D5" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D5" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D5"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D5"]
 stream = ExtResource("10_1bo6v")
 
-[node name="SoundQueue2D6" type="Node2D" parent="SoundPool2D"]
+[node name="SoundQueue2D6" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundPool2D/SoundQueue2D6"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D6"]
 stream = ExtResource("11_51uwe")
+
+[connection signal="timeout" from="OrderTimer" to="." method="_on_order_timer_timeout"]

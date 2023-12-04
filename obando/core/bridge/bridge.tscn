@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
+[gd_scene load_steps=12 format=3 uid="uid://bh2ipdr70flys"]
 
 [ext_resource type="Script" path="res://obando/core/bridge/bridge.gd" id="1_8txy6"]
 [ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://obando/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
@@ -11,13 +11,17 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y23sc"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5mi3"]
-a = Vector2(0, 32)
-b = Vector2(32, 32)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_selxd"]
-a = Vector2(32, 32)
-b = Vector2(32, 0)
+a = Vector2(16, 30)
+b = Vector2(16, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5mi3"]
+a = Vector2(0, 30)
+b = Vector2(48, 30)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_isqxm"]
+a = Vector2(48, 30)
+b = Vector2(48, 0)
 
 [node name="Bridge" type="RigidBody2D"]
 collision_layer = 8
@@ -46,7 +50,8 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_yqtl7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="InteractionAreaCollisionShape" type="CollisionShape2D" parent="InteractionArea"]
+unique_name_in_owner = true
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_y23sc")
 
@@ -71,15 +76,23 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_mask = 2
+collision_layer = 16
+collision_mask = 0
 
 [node name="BridgeLimit" type="CollisionShape2D" parent="StaticBody2D"]
 unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_selxd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="BridgeFloor" type="CollisionShape2D" parent="StaticBody2D2"]
+unique_name_in_owner = true
 shape = SubResource("SegmentShape2D_i5mi3")
 
-[node name="BridgeFloor" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="BridgeLimit2" type="CollisionShape2D" parent="StaticBody2D2"]
 unique_name_in_owner = true
-shape = SubResource("SegmentShape2D_selxd")
+shape = SubResource("SegmentShape2D_isqxm")
 
 [node name="ATimer" type="Timer" parent="."]
 unique_name_in_owner = true

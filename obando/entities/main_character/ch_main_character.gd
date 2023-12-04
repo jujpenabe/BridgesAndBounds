@@ -1,12 +1,17 @@
 extends CharacterBody2D
 class_name Player
 
-var _speed = 100.0
-@onready var _sound_pool_2d: SoundPool2D = %SoundPool2D
+enum {
+	IDLE,
+	MOVE,
+	ORDER
+}
+@onready var _sound_pool_2d: SoundPool2D = %WalkingSoundPool
 @onready var _main_character = %Main
 @onready var _mount = %Mount
 # get reference of the camera
 @onready var camera = %Camera2D
+@onready var _order_timer = %OrderTimer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -14,27 +19,36 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var type_a_followers = []
 var type_b_followers = []
 var type_c_followers = []
+var _speed = 75
+var _current_state = IDLE
+var _is_ordering = false
 
 func _process(delta: float) -> void:
-	pass
+	match _current_state:
+		IDLE:
+			if (_is_ordering):
+				_main_character.animation = "order"
+			else:
+				_main_character.animation = "idle"
+				_mount.animation = "idle"
+		MOVE:
+			_mount.animation = "walking"
+			if (_is_ordering):
+				_main_character.animation = "order"
+			else:
+				_main_character.animation = "walking"
+			_play_footstep_sounds();
+
+		ORDER:
+			_main_character.animation = "order"
+		_:
+			print("Error: Invalid state.")
 
 func _physics_process(delta):
-
-	# Animations
-	if (velocity.x > 1 || velocity.x < -1):
-		_main_character.animation = "walking"
-		_mount.animation = "walking"
-	else:
-		_main_character.animation = "idle"
-		_mount.animation = "idle"
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * _speed
@@ -43,15 +57,30 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	# Animations
+	if (velocity.x > 1 || velocity.x < -1):
+		_current_state = MOVE
+	else:
+		_current_state = IDLE
+
 	var isLeft = velocity.x < 0;
 	if (velocity.x != 0):
 		_main_character.flip_h = isLeft;
 		_mount.flip_h = isLeft;
-		_play_footstep_sounds();
 		if (isLeft):
 			_mount.offset.x = -6;
 		else:
 			_mount.offset.x = 6;
+
+
+func _input(event):
+	if event.is_action_pressed("add"):
+		_main_character.animation = "order"
+		_is_ordering = true
+		_order_timer.start(1)
+
+func _on_order_timer_timeout() -> void:
+	_is_ordering = false
 
 # Register new followers.
 func register_follower(vill: Villager) -> void:
@@ -65,7 +94,7 @@ func register_follower(vill: Villager) -> void:
 		_:
 			print("Error: Invalid follower type.")
 
-func assign_followers(type: int, post: Post) -> void:
+func assign_followers(type: int, post: Post, offset:int = 0) -> void:
 	match type:
 		0:
 			# take the first follower from the list and change its status to working

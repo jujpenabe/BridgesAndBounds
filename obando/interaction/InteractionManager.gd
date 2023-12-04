@@ -26,7 +26,7 @@ func unregister_area(area: InteractionArea):
 		active_areas.remove_at(index);
 	# if there are no more areas, hide the banner
 	if active_areas.size() == 0:
-		_timer.start(2);
+		_timer.start(1);
 
 func _process(delta):
 	active_areas.sort_custom(_sort_by_distance_to_player);
@@ -66,8 +66,8 @@ func _input(event):
 			active_areas.front().cancel_c_order.call();
 
 # function to assign follower to the post
-func assign_follower_to_post(type: int, post: Post):
-	_player.assign_followers(type, post);
+func assign_follower_to_post(type: int, post: Post, offset = 0):
+	_player.assign_followers(type, post, offset);
 
 # function to remove follower from the post
 func assign_follower_from_post(vill: Villager):

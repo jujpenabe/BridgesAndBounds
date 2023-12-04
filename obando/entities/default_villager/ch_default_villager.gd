@@ -8,24 +8,30 @@ enum {
 	WORKING
 }
 @export_enum("A", "B", "C",) var type: int = 0;
-@export var _speed = 30;
+@export var _speed:float = 30;
 @export_range (0, 11) var _sprite_2d_index: int;
 
+@onready var _player = get_tree().get_first_node_in_group("player");
 @onready var _rich_text_label = %RichTextLabel;
 @onready var sprites_2d: Array[AnimatedSprite2D]
 @onready var interaction_area = %InteractionArea
 @onready var _villager_sprite_animations = %VillagerSpriteAnimations
-@onready var _player = get_tree().get_first_node_in_group("player");
+
 @onready var _walking_sound_pool: SoundPool2D = %WalkingSoundPool;
+@onready var _chopping_sound_pool: SoundPool2D = %ChoppingSoundPool;
+@onready var _farming_sound_pool: SoundPool2D = %FarmingSoundPool;
+@onready var _hammer_sound_pool: SoundPool2D = %HammerSoundPool;
+@onready var _woman_recruitment_sound_pool: SoundPool2D = %WomanRecruitmentSoundPool;
+@onready var _man_recruitment_sound_pool: SoundPool2D = %ManRecruitmentSoundPool;
 
 var _sprite_2d: AnimatedSprite2D = null;
 var _current_state = IDLE;
 var _current_dir = Vector2.RIGHT;
-var _far_distance = 0;
+var _far_distance: float = 0;
 var _is_following = false;
 var _is_working = false;
 var _current_work:int = 0;
-
+var _random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -82,39 +88,42 @@ func _process(delta: float) -> void:
 		MOVE:
 			if _is_following:
 				if _player.position.x >= position.x + 100:
-					_speed = move_toward(_speed, 90, _choose([5, 10]));
+					_speed = move_toward(_speed, 75, _choose([5, 10]));
 				elif _player.position.x <= position.x - 100:
-					_speed = move_toward(_speed, 90, _choose([5, 10]));
+					_speed = move_toward(_speed, 75, _choose([5, 10]));
 				elif _player.position.x < position.x + 100 && _player.position.x >= position.x + 25:
-					_speed = move_toward(_speed, 60, 10);
+					_speed = move_toward(_speed, 50, 10);
 				elif _player.position.x > position.x - 100 && _player.position.x <= position.x - 25:
-					_speed = move_toward(_speed, 60, 10);
+					_speed = move_toward(_speed, 50, 10);
 				elif _player.position.x < position.x + 25 && _player.position.x > 0:
-					_speed = move_toward(_speed, 30, 5);
+					_speed = move_toward(_speed, 25, 5);
 				elif _player.position.x > position.x - 25 && _player.position.x < 0:
-					_speed = move_toward(_speed, 30, 5);
+					_speed = move_toward(_speed, 25, 5);
 				else:
 					_current_state = IDLE
 			elif _is_working:
 				if _far_distance > 50:
-					_speed = move_toward(_speed, 60, 5);
+					_speed = move_toward(_speed, 50, 5);
 				elif _far_distance <= 50 &&  _far_distance >= 0:
-					_speed = move_toward(_speed, 30, 10);
+					_speed = move_toward(_speed, 25, 10);
 				elif _far_distance < 0 && _far_distance > -50:
-					_speed = move_toward(_speed, 30, 10);
+					_speed = move_toward(_speed, 25, 10);
 				elif _far_distance <= -50:
-					_speed = move_toward(_speed, 60, 5);
+					_speed = move_toward(_speed, 50, 5);
 			_move(delta);
 		WORKING:
 			match _current_work:
 				0:
 					_sprite_2d.animation = "chopping"
+					_play_chopping_sound()
 				1:
 					_sprite_2d.animation = "farming"
+					_play_farming_sound()
 				2:
 					_sprite_2d.animation = "cooking"
 				3:
 					_sprite_2d.animation = "building"
+					_play_hammer_sound()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -127,7 +136,7 @@ func _move(delta):
 	_far_distance += _delta.x;
 	position += _delta;
 	_sprite_2d.animation = "walking"
-	_play_footsp_sounds();
+	_play_footstep_sounds();
 
 func _choose(array):
 	array.shuffle();
@@ -138,14 +147,13 @@ func _on_timer_timeout() -> void:
 		IDLE:
 			if _is_following:
 				if _player.position.x >= position.x + 75 || _player.position.x <= position.x - 75:
-					_current_state = _choose([NEW_DIR, MOVE, NEW_DIR]);
+					_current_state = _choose([NEW_DIR, IDLE, NEW_DIR]);
 				else:
-					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE]);
-
+					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE, IDLE, IDLE]);
 				if _current_state == NEW_DIR:
 					$Timer.wait_time = _choose([0.2, 0.2, 0.4]);
 				elif _current_state == IDLE:
-					$Timer.wait_time = _choose([0.8, 1.6, 2.4, 3.2]);
+					$Timer.wait_time = _choose([0.8, 1.6, 2]);
 				else:
 					$Timer.wait_time = _choose([0.4, 0.6]);
 			elif _is_working:
@@ -166,16 +174,16 @@ func _on_timer_timeout() -> void:
 					IDLE:
 						$Timer.wait_time = _choose([0.4, 0.6]);
 			else:
-				_current_state = _choose([NEW_DIR, IDLE, IDLE]);
-				$Timer.wait_time = _choose([1.5, 2, 4, 8]);
+				_current_state = _choose([NEW_DIR, IDLE]);
+				$Timer.wait_time = _choose([1, 1, 1.5, 2]);
 		NEW_DIR:
 			print("NEW_DIR");
 		MOVE:
 			if _is_following:
 				if _player.position.x >= position.x + 75 || _player.position.x <= position.x - 75:
-					_current_state = _choose([NEW_DIR, NEW_DIR, NEW_DIR, NEW_DIR, IDLE]);
+					_current_state = _choose([NEW_DIR, NEW_DIR, NEW_DIR, NEW_DIR, NEW_DIR, IDLE]);
 				else:
-					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE, IDLE]);
+					_current_state = _choose([NEW_DIR, IDLE, IDLE, IDLE, IDLE, IDLE]);
 				if _current_state == NEW_DIR:
 					$Timer.wait_time = _choose([0.2, 0.2, 0.4]);
 				elif _current_state == IDLE:
@@ -195,36 +203,38 @@ func _on_timer_timeout() -> void:
 				elif _current_state == WORKING:
 					$Timer.wait_time = _choose([2, 2, 4]);
 			else:
-				_current_state = _choose([NEW_DIR, MOVE, NEW_DIR]);
+				_current_state = _choose([NEW_DIR, MOVE, IDLE, IDLE]);
 				if _current_state == NEW_DIR:
-					$Timer.wait_time = _choose([0.6, 0.8]);
+					var duration = _choose([0.4, 0.6]);
+					var front = _random.randi_range(-2,16);
+					$Timer.wait_time = duration
+					set_sprite_position(Vector2(0, front) , duration, int(front * 0.25) + 4);
 				elif _current_state == IDLE:
 					$Timer.wait_time = _choose([2.4, 3.2]);
 		WORKING:
-			# If too far dont work.
 			if _far_distance > 50:
 				_current_state = _choose([NEW_DIR, IDLE]);
 			elif _far_distance <= 50 &&  _far_distance >= 0:
-				_current_state = _choose([NEW_DIR, WORKING, WORKING, IDLE]);
-			elif _far_distance < 0 && _far_distance > -50:
 				_current_state = _choose([NEW_DIR, WORKING, WORKING, WORKING, IDLE]);
+			elif _far_distance < 0 && _far_distance > -50:
+				_current_state = _choose([NEW_DIR, WORKING, WORKING, WORKING, WORKING, IDLE]);
 			elif _far_distance <= -50:
 				_current_state = _choose([NEW_DIR, IDLE]);
 
 			if _current_state == WORKING:
-				$Timer.wait_time = _choose([1, 1, 2]);
+				$Timer.wait_time = _choose([2, 2, 3]);
 			elif _current_state == IDLE:
-				$Timer.wait_time = _choose([1, 1, 2]);
+				$Timer.wait_time = _choose([0.5, 1, 1]);
 			else:
-				$Timer.wait_time = _choose([0.4, 0.4, 0.6]);
+				$Timer.wait_time = _choose([0.2, 0.4, 0.6]);
 
 func assign_to_post(post) -> void:
 	# Assign the NPC to a post.
+	_play_recruitment_sound(_random.randf_range(1.05, 1.2));
 	_is_following = false;
 	_is_working = true;
 	_current_state = NEW_DIR;
 	# calculate far distance from current position to post position.
-	_far_distance = position.x - post.position.x;
 	# Add to the pool of the pos
 	post.add_to_pool(self);
 	# set the animation based on the type of the post.
@@ -264,16 +274,47 @@ func _on_unfocus() -> void:
 func follow_player() -> void:
 	# Add to the player's followers.
 	_player.register_follower(self);
+	# play the recruitment sound.
+	_play_recruitment_sound(_random.randf_range(0.8, 0.95));
 	InteractionManager.unregister_area(interaction_area);
 	interaction_area.monitoring = false;
 	$Timer.start(0.2);
 	_is_following = true;
 	_is_working = false;
 	_current_state = NEW_DIR;
+	# set z index to 4
+	set_sprite_position(Vector2(), 0.4, 4);
 
-func new_far_distance(point: int) -> void:
+func set_far_distance(point: float) -> void:
 	_far_distance = position.x - point;
+	_current_state = NEW_DIR;
 
-func _play_footsp_sounds() -> void:
-	_walking_sound_pool.play_random_sound(-18);
-	_walking_sound_pool.set_pool_position(global_position);
+func _play_footstep_sounds() -> void:
+	_walking_sound_pool.play_random_sound(_random.randi_range(-18, -12));
+	_walking_sound_pool.set_pool_position(global_position + Vector2(0, _random.randi_range(16, 32)));
+
+func _play_chopping_sound() -> void:
+	_chopping_sound_pool.play_random_sound(_random.randi_range(-18, -12));
+	_chopping_sound_pool.set_pool_position(global_position + Vector2(0, -_random.randi_range(16, 32)));
+
+func _play_farming_sound() -> void:
+	_farming_sound_pool.play_random_sound(_random.randi_range(-18, -12));
+	_farming_sound_pool.set_pool_position(global_position + Vector2(0, -_random.randi_range(16, 32)));
+
+func _play_recruitment_sound(pitch: float = 1) -> void:
+	# if the current index is odd play the woman sound.
+	if (_sprite_2d_index % 2 == 0):
+		_woman_recruitment_sound_pool.play_random_sound(_random.randi_range(-6, 0), pitch);
+		_woman_recruitment_sound_pool.set_pool_position(global_position + Vector2(0, _random.randi_range(16, 32)));
+	else:
+		_man_recruitment_sound_pool.play_random_sound(_random.randi_range(-12, -6), pitch);
+		_man_recruitment_sound_pool.set_pool_position(global_position + Vector2(0, _random.randi_range(16, 32)));
+
+func _play_hammer_sound() -> void:
+	_hammer_sound_pool.play_random_sound(_random.randi_range(-24, -12));
+	_hammer_sound_pool.set_pool_position(global_position + Vector2(0, -_random.randi_range(-32, 32)));
+
+func set_sprite_position(pos: Vector2, duration: float = 1	, z_index: int = 4) -> void:
+	set_z_index(z_index);
+	var tween = create_tween()
+	tween.tween_property(_sprite_2d, "position", pos , duration)

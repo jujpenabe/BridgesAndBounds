@@ -397,6 +397,9 @@ animations = [{
 z_index = 2
 collision_layer = 4
 script = ExtResource("1_j5gev")
+type = null
+_speed = null
+_sprite_2d_index = null
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

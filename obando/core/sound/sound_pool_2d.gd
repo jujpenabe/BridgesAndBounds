@@ -23,7 +23,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 	return []
 
-func play_random_sound(vol: float = 0):
+func play_random_sound(vol: float = 0, pitch: float = 1):
 	# Set the position of the sound queue
 	# check if there are is a sound playing
 	for sound in _sounds:
@@ -36,6 +36,7 @@ func play_random_sound(vol: float = 0):
 			break
 	_last_index = index
 	_sounds[index].set_volume_db(vol)
+	_sounds[index].set_pitch_scale(pitch)
 	_sounds[index].play_sound()
 
 func set_pool_position(pos: Vector2):

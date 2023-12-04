@@ -4,7 +4,9 @@ class_name Bridge
 @onready var _bridge_sprite = %BridgeSprite
 @onready var _scaffold_sprite = %ScaffoldSprite
 @onready var _bridge_limit = %BridgeLimit
+@onready var _bridge_limit2 = %BridgeLimit2
 @onready var _bridge_floor = %BridgeFloor
+@onready var _interaction_area_collision_shape = %InteractionAreaCollisionShape
 
 # SFX
 @onready var _build_sound1 = %BuildSound1
@@ -86,22 +88,28 @@ func _build() -> void:
 			if _progress % 2 == 1:
 				_scaffold_sprite.region_rect = Rect2(_scaffold_sprite.region_rect.position, Vector2(_scaffold_sprite.region_rect.size.x + _section, _scaffold_sprite.region_rect.size.y))
 				_scaffold_sprite.offset.x += _section * 0.5
-				for vill in _a_villagers:
-					vill.new_far_distance(position.x + (_section))
+				_bridge_limit2.position.x += _section * 0.5
+				_bridge_floor.shape.set_b(Vector2(_bridge_floor.shape.get_b().x + 20, _bridge_floor.shape.get_b().y))
+				_continue_villagers_work(_section * 0.5)
 			# if progress is even build the bridge
-			if _progress % 2 == 0:
+			elif _progress % 2 == 0:
 				_bridge_sprite.region_rect = Rect2(_bridge_sprite.region_rect.position, Vector2(_bridge_sprite.region_rect.size.x + _section, _bridge_sprite.region_rect.size.y))
 				_bridge_sprite.offset.x += _section * 0.5
-
+				_continue_villagers_work(0)
 				# Move the scaffold left to the right
 				# random 50% thath the sprite will move
 				if _progress > 1 && randi() % 2:
-					_scaffold_sprite.region_rect = Rect2(_scaffold_sprite.region_rect.position, Vector2(_scaffold_sprite.region_rect.size.x - _section, _scaffold_sprite.region_rect.size.y))
-					_scaffold_sprite.offset.x += _section * 0.5
-					_bridge_limit.shape.set_b(Vector2(_bridge_limit.shape.get_b().x + _section * 0.5, _bridge_limit.shape.get_b().y))
-					_bridge_floor.position.x += _section * 0.5
+					var _section_copy = _section
+					# if the bridge limit2 position is less than the bridge limit position minus the section * 10
+					if _bridge_limit.position.x > _bridge_limit2.position.x - (_section * 4):
+						_section_copy *= 0.5
+					_scaffold_sprite.region_rect = Rect2(_scaffold_sprite.region_rect.position, Vector2(_scaffold_sprite.region_rect.size.x - _section_copy, _scaffold_sprite.region_rect.size.y))
+					_scaffold_sprite.offset.x += _section_copy * 0.5
+					_bridge_limit.position.x += _section_copy * 0.5
+					_interaction_area_collision_shape.position.x += (_section_copy * 0.5)
+					_interaction_area_collision_shape.scale.x += (_section_copy * 0.05)
 					# move the sound position
-					_build_sound1.position.x += _section * 0.5
+					_build_sound1.position.x += _section
 					# Move the villagers current far distnace to the right
 
 			# print the work of resources produced
@@ -117,3 +125,13 @@ func _stop_production() -> void:
 	_effort = 0
 	_can_cancel = true
 	_build_sound1.stop()
+
+func _continue_villagers_work(point: int) -> void:
+	_offset += point
+	for vill in _a_villagers:
+		vill.set_far_distance(position.x + _offset)
+	for vill in _b_villagers:
+		vill.set_far_distance(position.x + _offset)
+	for vill in _c_villagers:
+		vill.set_far_distance(position.x + _offset)
+	# set the new far distance to the villagers

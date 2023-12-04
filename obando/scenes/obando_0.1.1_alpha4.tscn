@@ -200,18 +200,13 @@ scale = Vector2(0.5, 0.5)
 [node name="Label" parent="Bridge" index="4"]
 text = "BUILD THE BRIDGE"
 
-[node name="Villagers" type="Node" parent="."]
-
 [node name="Farming" parent="." instance=ExtResource("27_dfe22")]
-z_index = 3
+z_index = 1
 position = Vector2(2227, 176)
 _facade = ExtResource("28_4bpud")
 _description_text = "crop to get wheat"
 _max_effort = 20
 type = 1
-
-[node name="Facade" parent="Farming" index="0"]
-z_index = 0
 
 [node name="Restaurant" parent="." instance=ExtResource("27_dfe22")]
 position = Vector2(1469, 176)
@@ -234,50 +229,52 @@ _facade = ExtResource("30_okw0d")
 _description_text = "chop to get wood"
 _max_resources = 10
 
-[node name="Villager" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villagers" type="Node2D" parent="."]
+
+[node name="Villager" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2425, 163)
 
-[node name="Villager2" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager2" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2361, 165)
 _sprite_2d_index = 1
 
-[node name="Villager3" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager3" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2309, 159)
 _sprite_2d_index = 2
 
-[node name="Villager4" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager4" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2236, 165)
 _sprite_2d_index = 3
 
-[node name="Villager5" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager5" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2179, 165)
 _sprite_2d_index = 4
 
-[node name="Villager6" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager6" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2115, 167)
 _sprite_2d_index = 5
 
-[node name="Villager7" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager7" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(2063, 161)
 _sprite_2d_index = 6
 
-[node name="Villager8" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager8" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(1990, 167)
 _sprite_2d_index = 7
 
-[node name="Villager9" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager9" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(1948, 166)
 _sprite_2d_index = 8
 
-[node name="Villager10" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager10" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(1884, 168)
 _sprite_2d_index = 9
 
-[node name="Villager11" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager11" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(1832, 162)
 _sprite_2d_index = 10
 
-[node name="Villager12" parent="." instance=ExtResource("15_ultj8")]
+[node name="Villager12" parent="Villagers" instance=ExtResource("15_ultj8")]
 position = Vector2(1759, 168)
 _sprite_2d_index = 11
 
@@ -290,3 +287,4 @@ _sprite_2d_index = 11
 [editable path="Restaurant"]
 [editable path="Sawmill"]
 [editable path="Sawmill2"]
+[editable path="Villagers/Villager"]
