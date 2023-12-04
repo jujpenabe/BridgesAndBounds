@@ -57,8 +57,3 @@ offset_right = 27.0
 offset_bottom = 18.0
 text = "00"
 label_settings = SubResource("LabelSettings_l5qxu")
-
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
