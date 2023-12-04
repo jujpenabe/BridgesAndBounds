@@ -1,150 +1,218 @@
-[gd_scene load_steps=3 format=3 uid="uid://cre4snpfsasjn"]
+[gd_scene load_steps=10 format=3 uid="uid://cre4snpfsasjn"]
 
 [ext_resource type="Texture2D" uid="uid://0y1pd1t2rk13" path="res://obando/ui/sprite_ui_1.png" id="1_eba6x"]
-[ext_resource type="Texture2D" uid="uid://0ib777313ji2" path="res://obando/ui/numbers.png" id="2_r8ykw"]
+[ext_resource type="Texture2D" uid="uid://dsytx2ehykre3" path="res://obando/ui/sprite_ui_0.png" id="1_wmbil"]
+[ext_resource type="Texture2D" uid="uid://bxq4vpbnhmatf" path="res://obando/ui/sprite_ui_2.png" id="2_efwi4"]
+[ext_resource type="Texture2D" uid="uid://bdti1ptkhrmq0" path="res://obando/ui/sprite_ui_3.png" id="3_gpsgc"]
+[ext_resource type="FontFile" uid="uid://clg2twphfn4ri" path="res://obando/ui/Pixel_Font_12px.ttf" id="4_bbt6t"]
+[ext_resource type="Texture2D" uid="uid://lm5i52ydnqqb" path="res://obando/ui/sprite_ui_4.png" id="4_jhm8u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4kdyq"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhsje"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0.407843, 0.407843, 0.407843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1kop"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0, 0.521569, 1, 0.968627)
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Clock" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureClock" type="TextureRect" parent="Clock"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 192.0
-offset_top = 176.0
-offset_right = 384.0
-offset_bottom = 216.0
+offset_left = -128.0
+offset_top = -35.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("1_eba6x")
+texture = ExtResource("2_efwi4")
 
-[node name="Sleeping" type="HBoxContainer" parent="Control/TextureRect"]
-modulate = Color(0, 0.521569, 1, 0.968627)
+[node name="ClockBackground" type="TextureRect" parent="Clock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -15.0
+offset_right = 16.0009
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gpsgc")
+
+[node name="AmPm" type="Sprite2D" parent="Clock"]
+position = Vector2(10.95, 24.265)
+texture = ExtResource("4_jhm8u")
+hframes = 2
+frame = 1
+
+[node name="TotalUnits" type="Control" parent="Clock"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 68.07
-offset_top = -4.445
-offset_right = 82.07
-offset_bottom = -4.445
+offset_left = 45.0
+offset_top = -17.0
+offset_right = 69.1848
+offset_bottom = -17.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/Sleeping"]
-modulate = Color(1, 1, 1, 0.968627)
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
+[node name="Total" type="Label" parent="Clock/TotalUnits"]
+layout_mode = 2
+offset_left = -109.92
+offset_top = 25.38
+offset_right = -97.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
 
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/Sleeping"]
-modulate = Color(1, 1, 1, 0.968627)
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
+[node name="Current" type="Label" parent="Clock/TotalUnits"]
+layout_mode = 2
+offset_left = -95.92
+offset_top = 25.38
+offset_right = -83.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_lhsje")
 
-[node name="TotalUnits" type="HBoxContainer" parent="Control/TextureRect"]
+[node name="VillagersNumbers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureUnits" type="TextureRect" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_wmbil")
+
+[node name="UnitsBackground" type="TextureRect" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -67.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_eba6x")
+
+[node name="Sleeping" type="Label" parent="VillagersNumbers"]
+layout_mode = 2
+offset_left = -2.0
+offset_top = 22.0
+offset_right = 10.0
+offset_bottom = 34.0
+text = "00"
+label_settings = SubResource("LabelSettings_t1kop")
+
+[node name="TotalUnits" type="Control" parent="VillagersNumbers"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 34.92
-offset_top = 0.38
+offset_top = 0.619995
 offset_right = 59.1048
-offset_bottom = 0.38
+offset_bottom = 0.619995
 grow_horizontal = 0
 size_flags_horizontal = 3
 
-[node name="Total" type="HBoxContainer" parent="Control/TextureRect/TotalUnits"]
-modulate = Color(0, 0, 0, 1)
+[node name="Total" type="Label" parent="VillagersNumbers/TotalUnits"]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = -109.92
+offset_top = 25.38
+offset_right = -97.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
 
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Total"]
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Total"]
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Current" type="HBoxContainer" parent="Control/TextureRect/TotalUnits"]
-modulate = Color(0.407843, 0.407843, 0.407843, 1)
+[node name="Current" type="Label" parent="VillagersNumbers/TotalUnits"]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = -95.92
+offset_top = 25.38
+offset_right = -83.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_lhsje")
 
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Current"]
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/TotalUnits/Current"]
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="UnitClasses" type="HBoxContainer" parent="Control/TextureRect"]
+[node name="UnitClasses" type="Control" parent="VillagersNumbers"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -39.965
-offset_right = 22.315
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -19.0
+offset_right = 22.28
+offset_bottom = -19.0
 grow_horizontal = 0
+grow_vertical = 2
 
-[node name="Red" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(18.555, 0)
+[node name="RedNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = -110.0
+offset_top = 25.0
+offset_right = -98.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
 
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Red"]
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Red"]
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Blue" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
-modulate = Color(0, 0, 0, 1)
-layout_direction = 1
+[node name="GreenNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = -88.0
+offset_top = 25.0
+offset_right = -76.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
 
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Blue"]
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Blue"]
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Green" type="HBoxContainer" parent="Control/TextureRect/UnitClasses"]
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(19.145, 0)
-layout_direction = 1
+[node name="BlueNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Ten" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Green"]
-position = Vector2(-107, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
-
-[node name="Unit" type="Sprite2D" parent="Control/TextureRect/UnitClasses/Green"]
-position = Vector2(-101, 30)
-texture = ExtResource("2_r8ykw")
-hframes = 10
+offset_left = -67.0
+offset_top = 25.0
+offset_right = -55.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
