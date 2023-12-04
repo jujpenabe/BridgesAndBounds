@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cl0vx6ogx0vwg" path="res://obando/entities/villagers/ch_c_villager3.tscn" id="23_lbejn"]
 [ext_resource type="PackedScene" uid="uid://cfixvaadbwq4v" path="res://obando/entities/villagers/ch_c_villager4.tscn" id="24_cb7qk"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D4" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_tow80")

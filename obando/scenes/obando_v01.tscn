@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cl0vx6ogx0vwg" path="res://obando/entities/villagers/ch_c_villager3.tscn" id="22_d6hpw"]
 [ext_resource type="PackedScene" uid="uid://cfixvaadbwq4v" path="res://obando/entities/villagers/ch_c_villager4.tscn" id="23_3qc35"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lf502")]
 z_index = 4
