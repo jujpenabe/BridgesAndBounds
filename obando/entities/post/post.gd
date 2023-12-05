@@ -70,23 +70,22 @@ func _process(delta: float) -> void:
 	pass
 
 func add_to_pool(vill: Villager) -> void:
-	if is_pool_full():
-		return
 	# start the production timer if it is not running
 	if _production_timer.is_stopped():
 		_production_timer.start(2)
 	# update the far distance of the villager
 	vill.set_far_distance(position.x + _offset)
+
 	# move the villager to the corresponding post
 	match type:
 		0:
-			vill.set_sprite_position(Vector2(0, - 32), 0.6, 2)
+			vill.set_sprite_position(Vector2(0, - 8), 0.6, 2, 0.8) # Wood
 		1:
-			vill.set_sprite_position(Vector2(0, - 16), 0.6, 2)
+			vill.set_sprite_position(Vector2(0, - 12), 0.6, 2, 0.9) # Wheat
 		2:
-			vill.set_sprite_position(Vector2(0, - 16), 0.6, 2)
+			vill.set_sprite_position(Vector2(0, - 16), 0.6, 1) # Food
 		3:
-			vill.set_sprite_position(Vector2(0, _random.randi_range(-4,4)), 2)
+			vill.set_sprite_position(Vector2(0, _random.randi_range(-4,4)), 2, 4, 0.9)
 	match vill.type:
 		0:
 			_a_villagers.append(vill)
@@ -95,7 +94,7 @@ func add_to_pool(vill: Villager) -> void:
 		2:
 			_c_villagers.append(vill)
 
-func remove_from_pool(vill_type: int) -> void:
+func remove_to_follow(vill_type: int) -> void:
 	# if there are no villagers in the pool return stop work
 	if _a_villagers.size() + _b_villagers.size() + _c_villagers.size() == 0:
 		_stop_production()
@@ -113,6 +112,16 @@ func remove_from_pool(vill_type: int) -> void:
 			if _c_villagers.size() == 0:
 				return
 			_c_villagers.pop_front().follow_player()
+
+func remove_villager(vill: Villager) -> void:
+	# remove the exact villager from the pool
+	match vill.type:
+		0:
+			_a_villagers.erase(vill)
+		1:
+			_b_villagers.erase(vill)
+		2:
+			_c_villagers.erase(vill)
 
 func is_pool_full() -> bool:
 	return (_a_villagers.size() + _b_villagers.size() + _c_villagers.size()) >= _max_villagers
@@ -250,34 +259,34 @@ func _produce() -> void:
 	# print the work of resources produced
 
 func _on_a_timer_timeout() -> void:
-	remove_from_pool(0)
+	remove_to_follow(0)
 	_can_cancel = false
 
 func _on_b_timer_timeout() -> void:
-	remove_from_pool(1)
+	remove_to_follow(1)
 	_can_cancel = false
 
 func _on_c_timer_timeout() -> void:
-	remove_from_pool(2)
+	remove_to_follow(2)
 	# can remove from pool false
 	_can_cancel = false
 
 func _on_cancel_a_order() -> void:
 	if _a_timer.time_left < _a_timer.wait_time && _can_cancel:
 		if !is_pool_full():
-			InteractionManager.assign_follower_to_post(0, self)
+			GameManager.assign_follower_to_post(0, self)
 	_a_timer.stop()
 
 func _on_cancel_b_order() -> void:
 	if _b_timer.time_left < _b_timer.wait_time && _can_cancel:
 		if !is_pool_full():
-			InteractionManager.assign_follower_to_post(1, self)
+			GameManager.assign_follower_to_post(1, self)
 	_b_timer.stop()
 
 func _on_cancel_c_order() -> void:
 	if _c_timer.time_left < _c_timer.wait_time && _can_cancel:
 		if !is_pool_full():
-			InteractionManager.assign_follower_to_post(2, self)
+			GameManager.assign_follower_to_post(2, self)
 	_c_timer.stop()
 
 func _stop_production() -> void:
@@ -289,3 +298,17 @@ func _stop_production() -> void:
 	_can_cancel = true
 	if _production_stream_player1.is_playing:
 		_production_stream_player1.stop()
+
+func _remove_all_villagers() -> void:
+	for vill in _a_villagers:
+		vill.follow_player()
+		vill._stamina = 200
+	for vill in _b_villagers:
+		vill.follow_player()
+		vill._stamina = 200
+	for vill in _c_villagers:
+		vill.follow_player()
+		vill._stamina = 200
+	_a_villagers.clear()
+	_b_villagers.clear()
+	_c_villagers.clear()

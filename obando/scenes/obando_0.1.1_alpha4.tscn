@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqlnijj213fir"]
+[gd_scene load_steps=24 format=3 uid="uid://dqlnijj213fir"]
 
 [ext_resource type="TileSet" uid="uid://dewtwcwh5oxal" path="res://obando/art/tiles/town_1.tres" id="1_pjy7u"]
 [ext_resource type="Texture2D" uid="uid://b4loaji7ypegc" path="res://obando/art/background/bg_sky.png" id="2_b3msu"]
+[ext_resource type="Texture2D" uid="uid://d3vmk8u6jybpb" path="res://obando/art/background/sprite_sun.png" id="2_yusxv"]
 [ext_resource type="Texture2D" uid="uid://qstbt8b1r21v" path="res://obando/art/background/bg_mountain_1.png" id="3_8bekb"]
 [ext_resource type="Texture2D" uid="uid://qjtd5s7jh218" path="res://obando/art/background/bg_cloud_1.png" id="4_j7hcx"]
 [ext_resource type="Texture2D" uid="uid://befc70jlfoxml" path="res://obando/art/background/bg_mountain_2.png" id="5_5low8"]
@@ -15,12 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://bb8owqvksg3r2" path="res://obando/entities/main_character/ch_main_character.tscn" id="13_0ftnt"]
 [ext_resource type="PackedScene" uid="uid://bh2ipdr70flys" path="res://obando/core/bridge/bridge.tscn" id="14_d1j5d"]
 [ext_resource type="PackedScene" uid="uid://coar745lkp6ww" path="res://obando/entities/villagers/ch_a_villager1.tscn" id="15_ultj8"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="20_jbkuh"]
+[ext_resource type="PackedScene" uid="uid://cmvoan2qublq4" path="res://obando/entities/villagers/villager_spawner.tscn" id="22_jx5ej"]
 [ext_resource type="PackedScene" uid="uid://bj07ueu17vgjy" path="res://obando/entities/post/post.tscn" id="27_dfe22"]
 [ext_resource type="Texture2D" uid="uid://c677lj146bjmd" path="res://obando/art/sprites_varied/sprite_deposit_cob.png" id="28_4bpud"]
 [ext_resource type="Texture2D" uid="uid://b10sj1qq1gl84" path="res://obando/art/sprites_varied/sprite_deposit_food.png" id="29_mn0yg"]
 [ext_resource type="Texture2D" uid="uid://bt47yhqa6r1lc" path="res://obando/art/sprites_varied/sprite_deposit_wood.png" id="30_okw0d"]
 
-[node name="Node2D2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btmpt"]
+size = Vector2(10, 100)
+
+[node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_pjy7u")
@@ -44,6 +50,7 @@ layer_5/z_index = 3
 layer_5/tile_data = PackedInt32Array(327750, 2031616, 11, 327751, 2031616, 11, 327747, 1835008, 11, 327748, 1900544, 11, 327749, 1966080, 11, 327752, 1835008, 11, 327753, 1900544, 11, 327754, 1966080, 11, 327746, 1835008, 11, 327755, 1966080, 11, 262189, 1048576, 7, 327725, 1048576, 8, 262190, 1114112, 7, 327726, 1114112, 8)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(-4702.67, -30.1337)
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 1)
@@ -51,6 +58,11 @@ motion_scale = Vector2(0, 1)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
 texture = ExtResource("2_b3msu")
 centered = false
+
+[node name="SpriteSun" type="Sprite2D" parent="ParallaxBackground/Sky"]
+position = Vector2(32, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_yusxv")
 
 [node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-157, 118)
@@ -171,22 +183,25 @@ layer_2/modulate = Color(1, 0.905882, 0.741176, 1)
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(131077, 1966081, 0, 196613, 1966081, 1, 262149, 1966081, 2, 327685, 1966081, 3, 131078, 2031617, 0, 196614, 2031617, 1, 262150, 2031617, 2, 327686, 2031617, 3, 262157, 1703937, 2, 327693, 1703937, 3, 262166, 1703937, 2, 327702, 1703937, 3, 131102, 1835009, 0, 196638, 1835009, 1, 262174, 1835009, 2, 327710, 1835009, 3, 131103, 1900545, 0, 196639, 1900545, 1, 262175, 1900545, 2, 327711, 1900545, 3, 262181, 1769473, 2, 327717, 1769473, 3, 262188, 1769473, 2, 327724, 1769473, 3, 196584, 1835009, 5, 262120, 1835009, 6, 327656, 1835009, 7, 393192, 1835009, 8, 196585, 1900545, 5, 262121, 1900545, 6, 327657, 1900545, 7, 393193, 1900545, 8, 196586, 1703937, 5, 262122, 1703937, 6, 327658, 1703937, 7, 393194, 1703937, 8, 131051, 1769473, 4, 196587, 1769473, 5, 262123, 1769473, 6, 327659, 1769473, 7, 393195, 1769473, 8, 196588, 1966081, 5, 262124, 1966081, 6, 327660, 1966081, 7, 393196, 1966081, 8, 196589, 2031617, 5, 262125, 2031617, 6, 327661, 2031617, 7, 393197, 2031617, 8, 131054, 1703937, 4, 196590, 1703937, 5, 262126, 1703937, 6, 327662, 1703937, 7, 393198, 1703937, 8, 196591, 1769473, 5, 262127, 1769473, 6, 327663, 1769473, 7, 393199, 1769473, 8, 196592, 1703937, 5, 262128, 1703937, 6, 327664, 1703937, 7, 393200, 1703937, 8, 131050, 1703937, 4, 131055, 1769473, 4, 131056, 1703937, 4, 131057, 1769473, 4, 196593, 1769473, 5, 262129, 1769473, 6, 327665, 1769473, 7, 393201, 1769473, 8, 196594, 1966081, 5, 262130, 1966081, 6, 327666, 1966081, 7, 393202, 1966081, 8, 196595, 2031617, 5, 262131, 2031617, 6, 327667, 2031617, 7, 393203, 2031617, 8)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("13_0ftnt")]
+[node name="Serene" parent="." instance=ExtResource("13_0ftnt")]
 z_index = 5
-position = Vector2(2464, 168)
+position = Vector2(543.224, 173.321)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Serene"]
 unique_name_in_owner = true
 offset = Vector2(0, -30)
 position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+drag_horizontal_enabled = true
+editor_draw_drag_margin = true
 
 [node name="Bridge" parent="." instance=ExtResource("14_d1j5d")]
 position = Vector2(2667, 187)
 _description_text = "Build the bridge"
-_max_villagers = 10
-_max_effort = 1
-_max_resources = 1000
-_resources = 1000
+_max_villagers = 15
+_max_effort = 2
+_max_resources = 100
+_resources = 100
 type = 3
 
 [node name="BridgeSprite" parent="Bridge" index="0"]
@@ -205,7 +220,6 @@ z_index = 1
 position = Vector2(2227, 176)
 _facade = ExtResource("28_4bpud")
 _description_text = "crop to get wheat"
-_max_effort = 20
 type = 1
 
 [node name="Restaurant" parent="." instance=ExtResource("27_dfe22")]
@@ -232,51 +246,74 @@ _max_resources = 10
 [node name="Villagers" type="Node2D" parent="."]
 
 [node name="Villager" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2425, 163)
+position = Vector2(463.645, 176)
 
 [node name="Villager2" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2361, 165)
-_sprite_2d_index = 1
+position = Vector2(638.045, 176)
+type = 1
+sprite_index = 1
 
 [node name="Villager3" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2309, 159)
-_sprite_2d_index = 2
+position = Vector2(689.645, 176)
+type = 2
+sprite_index = 2
 
 [node name="Villager4" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2236, 165)
-_sprite_2d_index = 3
+position = Vector2(301.645, 172.688)
+type = 2
+sprite_index = 3
 
-[node name="Villager5" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2179, 165)
-_sprite_2d_index = 4
+[node name="Label" type="Label" parent="."]
+offset_left = 3224.0
+offset_top = 96.0
+offset_right = 3603.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.831373, 0.615686, 0.341176, 1)
+theme_override_colors/font_shadow_color = Color(0.05, 0.05, 0.05, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_jbkuh")
+theme_override_font_sizes/font_size = 44
+text = "THANKS FOR PLAYING!"
 
-[node name="Villager6" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2115, 167)
-_sprite_2d_index = 5
+[node name="InvisibleWall" type="StaticBody2D" parent="."]
+position = Vector2(3560, 160)
+collision_mask = 0
 
-[node name="Villager7" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(2063, 161)
-_sprite_2d_index = 6
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall"]
+shape = SubResource("RectangleShape2D_btmpt")
 
-[node name="Villager8" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1990, 167)
-_sprite_2d_index = 7
+[node name="InvisibleWall2" type="StaticBody2D" parent="."]
+position = Vector2(-1860, 160)
+collision_mask = 0
 
-[node name="Villager9" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1948, 166)
-_sprite_2d_index = 8
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall2"]
+shape = SubResource("RectangleShape2D_btmpt")
 
-[node name="Villager10" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1884, 168)
-_sprite_2d_index = 9
+[node name="Spawners" type="Node2D" parent="."]
 
-[node name="Villager11" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1832, 162)
-_sprite_2d_index = 10
+[node name="VillagerSpawner" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(1790.52, 184)
 
-[node name="Villager12" parent="Villagers" instance=ExtResource("15_ultj8")]
-position = Vector2(1759, 168)
-_sprite_2d_index = 11
+[node name="VillagerSpawner2" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(1421, 184)
+
+[node name="VillagerSpawner3" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(1200.03, 184)
+
+[node name="VillagerSpawner4" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(943.505, 184)
+
+[node name="VillagerSpawner5" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(783.812, 184)
+
+[node name="VillagerSpawner6" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(462.522, 184)
+
+[node name="VillagerSpawner7" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(303.465, 184)
+
+[node name="VillagerSpawner8" parent="Spawners" instance=ExtResource("22_jx5ej")]
+position = Vector2(111.072, 184)
 
 [connection signal="timeout" from="Bridge/ATimer" to="Bridge" method="_on_a_timer_timeout"]
 [connection signal="timeout" from="Bridge/BTimer" to="Bridge" method="_on_b_timer_timeout"]
@@ -288,3 +325,6 @@ _sprite_2d_index = 11
 [editable path="Sawmill"]
 [editable path="Sawmill2"]
 [editable path="Villagers/Villager"]
+[editable path="Villagers/Villager2"]
+[editable path="Villagers/Villager3"]
+[editable path="Villagers/Villager4"]

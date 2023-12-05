@@ -23,13 +23,16 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 	return []
 
-func play_random_sound(vol: float = 0, pitch: float = 1):
+func play_random_sound(vol: float = 0, pitch: float = 1, rng_chance: float = 1):
 	# Set the position of the sound queue
 	# check if there are is a sound playing
 	for sound in _sounds:
 		if sound.is_queue_playing():
 			return
 	var index
+	if rng_chance < 1:
+		if _random.randf_range(0, 1) > rng_chance:
+			return
 	while true:
 		index = _random.randi_range(0, _sounds.size() - 1)
 		if index != _last_index:

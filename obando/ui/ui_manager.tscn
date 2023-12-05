@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1e81lt7cxay"]
+
+[ext_resource type="Script" path="res://obando/ui/ui_manager.gd" id="1_el5kl"]
+[ext_resource type="PackedScene" uid="uid://cre4snpfsasjn" path="res://obando/ui/UI.tscn" id="2_c163l"]
+
+[node name="UiManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_el5kl")
+
+[node name="UI" parent="." instance=ExtResource("2_c163l")]
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

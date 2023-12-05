@@ -1,4 +1,4 @@
-[gd_scene load_steps=324 format=3 uid="uid://coar745lkp6ww"]
+[gd_scene load_steps=326 format=3 uid="uid://coar745lkp6ww"]
 
 [ext_resource type="Script" path="res://obando/entities/default_villager/ch_default_villager.gd" id="1_vvv8t"]
 [ext_resource type="Texture2D" uid="uid://cre3kcrv7kqr1" path="res://obando/entities/villagers/villager_a_1.png" id="2_mftsl"]
@@ -27,13 +27,15 @@
 [ext_resource type="AudioStream" uid="uid://d3ko6rcfbms1w" path="res://obando/effects/SFX_AxeHit_02.wav" id="25_y1l70"]
 [ext_resource type="AudioStream" uid="uid://1uktj6roqis7" path="res://obando/effects/SFX_AxeHit_03.wav" id="26_slgr5"]
 [ext_resource type="AudioStream" uid="uid://cecwp5ot0f8gb" path="res://obando/effects/SFX_AxeHit_04.wav" id="27_yfoww"]
-[ext_resource type="AudioStream" uid="uid://bu12frlaakpxi" path="res://obando/effects/FS_Grass_01.wav" id="28_3kbvy"]
-[ext_resource type="AudioStream" uid="uid://bqravt2f5fadi" path="res://obando/effects/FS_Grass_02.wav" id="29_5udu0"]
-[ext_resource type="AudioStream" uid="uid://cr6w2cov52h0m" path="res://obando/effects/FS_Grass_03.wav" id="30_3ado2"]
-[ext_resource type="AudioStream" uid="uid://mou1ndkdxnj0" path="res://obando/effects/FS_Grass_04.wav" id="31_dm0fy"]
-[ext_resource type="AudioStream" uid="uid://b0sks86bsytim" path="res://obando/effects/FS_Grass_05.wav" id="32_nl2aa"]
-[ext_resource type="AudioStream" uid="uid://bkgttaaf7fr84" path="res://obando/effects/FS_Grass_06.wav" id="33_qdq52"]
+[ext_resource type="AudioStream" uid="uid://cnn3cilgblnrh" path="res://obando/effects/SFX_Harvest_01.wav" id="28_twlkh"]
+[ext_resource type="AudioStream" uid="uid://c6l702bdr3f28" path="res://obando/effects/SFX_Harvest_02.wav" id="29_4lhsa"]
+[ext_resource type="AudioStream" uid="uid://b2ma60vlvwo4j" path="res://obando/effects/SFX_Harvest_03.wav" id="30_xg82g"]
+[ext_resource type="AudioStream" uid="uid://cobnbuewaplvo" path="res://obando/effects/SFX_Harvest_04.wav" id="31_r60co"]
+[ext_resource type="AudioStream" uid="uid://pcw2r4waijns" path="res://obando/effects/SFX_Kitchen_01.wav" id="32_pyjtj"]
+[ext_resource type="AudioStream" uid="uid://cylw6bol3i1h5" path="res://obando/effects/SFX_Kitchen_02.wav" id="33_qhgou"]
 [ext_resource type="AudioStream" uid="uid://uklh24wbi2ww" path="res://obando/effects/SFX_Reclutement_01.wav" id="34_dne5e"]
+[ext_resource type="AudioStream" uid="uid://5bydbhcbmr8m" path="res://obando/effects/SFX_Kitchen_03.wav" id="34_wc6yj"]
+[ext_resource type="AudioStream" uid="uid://w6yvsltw1qcj" path="res://obando/effects/SFX_Kitchen_04.wav" id="35_denog"]
 [ext_resource type="AudioStream" uid="uid://cyx74fl7xhohg" path="res://obando/effects/SFX_Reclutement_05.wav" id="35_kf3w4"]
 [ext_resource type="AudioStream" uid="uid://r6xrfkkhnwtr" path="res://obando/effects/SFX_Reclutement_06.wav" id="36_g4g3j"]
 [ext_resource type="AudioStream" uid="uid://b1lwfqbmdg0j8" path="res://obando/effects/SFX_Reclutement_02.wav" id="37_jhafi"]
@@ -2522,42 +2524,60 @@ script = ExtResource("16_5oo3p")
 script = ExtResource("17_dygle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D"]
-stream = ExtResource("28_3kbvy")
+stream = ExtResource("28_twlkh")
 max_distance = 640.0
 
 [node name="SoundQueue2D2" type="Node2D" parent="FarmingSoundPool"]
 script = ExtResource("17_dygle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D2"]
-stream = ExtResource("29_5udu0")
+stream = ExtResource("29_4lhsa")
 max_distance = 640.0
 
 [node name="SoundQueue2D3" type="Node2D" parent="FarmingSoundPool"]
 script = ExtResource("17_dygle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D3"]
-stream = ExtResource("30_3ado2")
+stream = ExtResource("30_xg82g")
 max_distance = 640.0
 
 [node name="SoundQueue2D4" type="Node2D" parent="FarmingSoundPool"]
 script = ExtResource("17_dygle")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D4"]
-stream = ExtResource("31_dm0fy")
+stream = ExtResource("31_r60co")
 max_distance = 640.0
 
-[node name="SoundQueue2D5" type="Node2D" parent="FarmingSoundPool"]
+[node name="CookingSoundPool" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("16_5oo3p")
+
+[node name="SoundQueue2D" type="Node2D" parent="CookingSoundPool"]
 script = ExtResource("17_dygle")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D5"]
-stream = ExtResource("32_nl2aa")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CookingSoundPool/SoundQueue2D"]
+stream = ExtResource("32_pyjtj")
 max_distance = 640.0
 
-[node name="SoundQueue2D6" type="Node2D" parent="FarmingSoundPool"]
+[node name="SoundQueue2D2" type="Node2D" parent="CookingSoundPool"]
 script = ExtResource("17_dygle")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FarmingSoundPool/SoundQueue2D6"]
-stream = ExtResource("33_qdq52")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CookingSoundPool/SoundQueue2D2"]
+stream = ExtResource("33_qhgou")
+max_distance = 640.0
+
+[node name="SoundQueue2D3" type="Node2D" parent="CookingSoundPool"]
+script = ExtResource("17_dygle")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CookingSoundPool/SoundQueue2D3"]
+stream = ExtResource("34_wc6yj")
+max_distance = 640.0
+
+[node name="SoundQueue2D4" type="Node2D" parent="CookingSoundPool"]
+script = ExtResource("17_dygle")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CookingSoundPool/SoundQueue2D4"]
+stream = ExtResource("35_denog")
 max_distance = 640.0
 
 [node name="HammerSoundPool" type="Node2D" parent="."]

@@ -1,16 +1,32 @@
-[gd_scene load_steps=45 format=3 uid="uid://bb8owqvksg3r2"]
+[gd_scene load_steps=61 format=3 uid="uid://bb8owqvksg3r2"]
 
 [ext_resource type="Script" path="res://obando/entities/main_character/ch_main_character.gd" id="1_s5xp8"]
 [ext_resource type="Texture2D" uid="uid://cxwn4mqi2da3e" path="res://obando/entities/main_character/mount.png" id="2_gqoqa"]
 [ext_resource type="Texture2D" uid="uid://bsod4pripi422" path="res://obando/entities/main_character/main_character.png" id="2_jk1wn"]
 [ext_resource type="Script" path="res://obando/core/sound/sound_pool_2d.gd" id="4_5gcu5"]
 [ext_resource type="Script" path="res://obando/core/sound/sound_queue_2d.gd" id="5_bl5g3"]
-[ext_resource type="AudioStream" uid="uid://bcery51m7ikh8" path="res://obando/effects/FS_Concrete_01.wav" id="6_vto6x"]
-[ext_resource type="AudioStream" uid="uid://nureyjov4ks8" path="res://obando/effects/FS_Concrete_02.wav" id="7_mf0jn"]
-[ext_resource type="AudioStream" uid="uid://uuodyan3vuir" path="res://obando/effects/FS_Concrete_03.wav" id="8_5nijq"]
-[ext_resource type="AudioStream" uid="uid://bi0g74in6bgkn" path="res://obando/effects/FS_Concrete_04.wav" id="9_1k8lc"]
-[ext_resource type="AudioStream" uid="uid://bfnyeqkdr3ik8" path="res://obando/effects/FS_Concrete_05.wav" id="10_1bo6v"]
-[ext_resource type="AudioStream" uid="uid://cdk6kp0sjvkju" path="res://obando/effects/FS_Concrete_06.wav" id="11_51uwe"]
+[ext_resource type="AudioStream" uid="uid://bpvklycuryyk" path="res://obando/effects/SFX_Donkey_01.wav" id="6_bnqlt"]
+[ext_resource type="AudioStream" uid="uid://hshmhwwsqms3" path="res://obando/effects/SFX_Donkey_02.wav" id="7_jf2cu"]
+[ext_resource type="AudioStream" uid="uid://c2vjnrwie1t6w" path="res://obando/effects/SFX_Donkey_03.wav" id="8_v1m05"]
+[ext_resource type="AudioStream" uid="uid://dxtq73q5hn6n2" path="res://obando/effects/SFX_Donkey_04.wav" id="9_iq1dk"]
+[ext_resource type="AudioStream" uid="uid://yuslvhw7dpjm" path="res://obando/effects/FS_Donkey_01.wav" id="12_hp1s3"]
+[ext_resource type="AudioStream" uid="uid://ccljf10abb63b" path="res://obando/effects/SFX_PlayerDialogue_05.wav" id="12_kbdla"]
+[ext_resource type="AudioStream" uid="uid://ch4v17dqvftik" path="res://obando/effects/FS_Donkey_02.wav" id="13_02sge"]
+[ext_resource type="AudioStream" uid="uid://bf7jktnvrj6eu" path="res://obando/effects/SFX_PlayerDialogue_06.wav" id="13_uks4q"]
+[ext_resource type="AudioStream" uid="uid://rimlw7wvnkl3" path="res://obando/effects/SFX_PlayerDialogue_07.wav" id="14_dbiho"]
+[ext_resource type="AudioStream" uid="uid://b7b1hdymryaq" path="res://obando/effects/FS_Donkey_03.wav" id="14_otwhl"]
+[ext_resource type="AudioStream" uid="uid://dhsi1hjke64mv" path="res://obando/effects/FS_Donkey_04.wav" id="15_e514q"]
+[ext_resource type="AudioStream" uid="uid://bkfdpab1ao82t" path="res://obando/effects/SFX_PlayerDialogue_08.wav" id="15_oayfn"]
+[ext_resource type="AudioStream" uid="uid://cugb4td7bte2l" path="res://obando/effects/SFX_PlayerDialogue_09.wav" id="16_5an6g"]
+[ext_resource type="AudioStream" uid="uid://cgscjoch1ek4n" path="res://obando/effects/FS_Donkey_05.wav" id="16_ftusc"]
+[ext_resource type="AudioStream" uid="uid://cmdsip22vqm7b" path="res://obando/effects/FS_Donkey_06.wav" id="17_03f0h"]
+[ext_resource type="AudioStream" uid="uid://ctymjp1wprl5i" path="res://obando/effects/SFX_PlayerDialogue_10.wav" id="17_4nvoh"]
+[ext_resource type="AudioStream" uid="uid://dcewvvyxq5sf4" path="res://obando/effects/SFX_PlayerDialogue_11.wav" id="18_atjrd"]
+[ext_resource type="AudioStream" uid="uid://cjjfpwi8j5xwf" path="res://obando/effects/FS_Donkey_07.wav" id="18_lr8cy"]
+[ext_resource type="AudioStream" uid="uid://h5ui13160wpf" path="res://obando/effects/SFX_PlayerDialogue_12.wav" id="19_oeqaw"]
+[ext_resource type="AudioStream" uid="uid://btjxg3oex7t23" path="res://obando/effects/FS_Donkey_08.wav" id="19_w5tra"]
+[ext_resource type="AudioStream" uid="uid://cwvfpqs4rk53m" path="res://obando/effects/FS_Donkey_09.wav" id="20_hnxdv"]
+[ext_resource type="AudioStream" uid="uid://cfrkw4wxjx50e" path="res://obando/effects/FS_Donkey_10.wav" id="21_r3fj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ujw"]
 atlas = ExtResource("2_gqoqa")
@@ -297,6 +313,34 @@ shape = SubResource("CapsuleShape2D_xl1b1")
 [node name="OrderTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 
+[node name="DonkeySoundPool" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_5gcu5")
+
+[node name="SoundQueue2D" type="Node2D" parent="DonkeySoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DonkeySoundPool/SoundQueue2D"]
+stream = ExtResource("6_bnqlt")
+
+[node name="SoundQueue2D2" type="Node2D" parent="DonkeySoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DonkeySoundPool/SoundQueue2D2"]
+stream = ExtResource("7_jf2cu")
+
+[node name="SoundQueue2D3" type="Node2D" parent="DonkeySoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DonkeySoundPool/SoundQueue2D3"]
+stream = ExtResource("8_v1m05")
+
+[node name="SoundQueue2D4" type="Node2D" parent="DonkeySoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DonkeySoundPool/SoundQueue2D4"]
+stream = ExtResource("9_iq1dk")
+
 [node name="WalkingSoundPool" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_5gcu5")
@@ -305,36 +349,112 @@ script = ExtResource("4_5gcu5")
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D"]
-stream = ExtResource("6_vto6x")
+stream = ExtResource("12_hp1s3")
 
 [node name="SoundQueue2D2" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D2"]
-stream = ExtResource("7_mf0jn")
+stream = ExtResource("13_02sge")
 
 [node name="SoundQueue2D3" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D3"]
-stream = ExtResource("8_5nijq")
+stream = ExtResource("14_otwhl")
 
 [node name="SoundQueue2D4" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D4"]
-stream = ExtResource("9_1k8lc")
+stream = ExtResource("15_e514q")
 
 [node name="SoundQueue2D5" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D5"]
-stream = ExtResource("10_1bo6v")
+stream = ExtResource("16_ftusc")
 
 [node name="SoundQueue2D6" type="Node2D" parent="WalkingSoundPool"]
 script = ExtResource("5_bl5g3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D6"]
-stream = ExtResource("11_51uwe")
+stream = ExtResource("17_03f0h")
+
+[node name="SoundQueue2D7" type="Node2D" parent="WalkingSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D7"]
+stream = ExtResource("18_lr8cy")
+
+[node name="SoundQueue2D8" type="Node2D" parent="WalkingSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D8"]
+stream = ExtResource("19_w5tra")
+
+[node name="SoundQueue2D9" type="Node2D" parent="WalkingSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D9"]
+stream = ExtResource("20_hnxdv")
+
+[node name="SoundQueue2D10" type="Node2D" parent="WalkingSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WalkingSoundPool/SoundQueue2D10"]
+stream = ExtResource("21_r3fj4")
+
+[node name="DialogueSoundPool" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_5gcu5")
+
+[node name="SoundQueue2D" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D"]
+stream = ExtResource("12_kbdla")
+
+[node name="SoundQueue2D2" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D2"]
+stream = ExtResource("13_uks4q")
+
+[node name="SoundQueue2D3" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D3"]
+stream = ExtResource("14_dbiho")
+
+[node name="SoundQueue2D4" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D4"]
+stream = ExtResource("15_oayfn")
+
+[node name="SoundQueue2D5" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D5"]
+stream = ExtResource("16_5an6g")
+
+[node name="SoundQueue2D6" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D6"]
+stream = ExtResource("17_4nvoh")
+
+[node name="SoundQueue2D7" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D7"]
+stream = ExtResource("18_atjrd")
+
+[node name="SoundQueue2D8" type="Node2D" parent="DialogueSoundPool"]
+script = ExtResource("5_bl5g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueSoundPool/SoundQueue2D8"]
+stream = ExtResource("19_oeqaw")
 
 [connection signal="timeout" from="OrderTimer" to="." method="_on_order_timer_timeout"]

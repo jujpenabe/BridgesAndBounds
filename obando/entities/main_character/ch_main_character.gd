@@ -6,7 +6,10 @@ enum {
 	MOVE,
 	ORDER
 }
-@onready var _sound_pool_2d: SoundPool2D = %WalkingSoundPool
+
+@onready var _donkey_sound_pool: SoundPool2D = %DonkeySoundPool
+@onready var _walking_sound_pool: SoundPool2D = %WalkingSoundPool
+@onready var _dialogue_sound_pool: SoundPool2D = %DialogueSoundPool
 @onready var _main_character = %Main
 @onready var _mount = %Mount
 # get reference of the camera
@@ -19,9 +22,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var type_a_followers = []
 var type_b_followers = []
 var type_c_followers = []
-var _speed = 75
+var _speed = 60
 var _current_state = IDLE
 var _is_ordering = false
+var _current_followers: int = 0
+
+var _random: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func _process(delta: float) -> void:
 	match _current_state:
@@ -31,12 +38,14 @@ func _process(delta: float) -> void:
 			else:
 				_main_character.animation = "idle"
 				_mount.animation = "idle"
+				_play_donkey_sound(0.01)
 		MOVE:
 			_mount.animation = "walking"
 			if (_is_ordering):
 				_main_character.animation = "order"
 			else:
 				_main_character.animation = "walking"
+				_play_donkey_sound(0.005)
 			_play_footstep_sounds();
 
 		ORDER:
@@ -55,7 +64,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, _speed/10)
 
-	move_and_slide()
 
 	# Animations
 	if (velocity.x > 1 || velocity.x < -1):
@@ -72,18 +80,22 @@ func _physics_process(delta):
 		else:
 			_mount.offset.x = 6;
 
+	move_and_slide()
 
 func _input(event):
 	if event.is_action_pressed("add"):
 		_main_character.animation = "order"
 		_is_ordering = true
 		_order_timer.start(1)
+		_play_dialogue_sound(_random.randf_range(0.95, 1.05))
 
 func _on_order_timer_timeout() -> void:
 	_is_ordering = false
 
 # Register new followers.
 func register_follower(vill: Villager) -> void:
+	if vill._is_tired:
+		vill.add_stamina(50)
 	match vill.type:
 		0:
 			type_a_followers.append(vill)
@@ -93,8 +105,23 @@ func register_follower(vill: Villager) -> void:
 			type_c_followers.append(vill)
 		_:
 			print("Error: Invalid follower type.")
+	_current_followers += 1
 
-func assign_followers(type: int, post: Post, offset:int = 0) -> void:
+func unregister_follower(vill: Villager) -> void:
+	match vill.type:
+		0:
+			type_a_followers.erase(vill)
+		1:
+			type_b_followers.erase(vill)
+		2:
+			type_c_followers.erase(vill)
+		_:
+			print("Error: Invalid follower type.")
+	_current_followers -= 1
+
+func assign_followers(type: int, post: Post) -> void:
+	if post.is_pool_full():
+		return
 	match type:
 		0:
 			# take the first follower from the list and change its status to working
@@ -113,7 +140,19 @@ func assign_followers(type: int, post: Post, offset:int = 0) -> void:
 			type_c_followers.pop_front().assign_to_post(post)
 		_:
 			print("Error: Invalid follower type.")
+	_current_followers -= 1
 
 func _play_footstep_sounds() -> void:
-	_sound_pool_2d.play_random_sound(-6)
-	_sound_pool_2d.set_pool_position(global_position)
+	_walking_sound_pool.play_random_sound(_random.randi_range(-18, -6), _random.randf_range(0.95, 1.05))
+	_walking_sound_pool.set_pool_position(global_position)
+
+func _play_dialogue_sound(pitch: float = 1) -> void:
+	_dialogue_sound_pool.play_random_sound(_random.randi_range(-8, -4), pitch);
+	_dialogue_sound_pool.set_pool_position(global_position)
+
+func _play_donkey_sound(rng: float) -> void:
+	_donkey_sound_pool.play_random_sound(_random.randi_range(-18, -12), _random.randf_range(0.95, 1.05), rng);
+	_donkey_sound_pool.set_pool_position(global_position)
+
+func get_current_followers() -> int:
+	return _current_followers

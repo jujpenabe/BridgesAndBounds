@@ -90,27 +90,45 @@ func _build() -> void:
 				_scaffold_sprite.offset.x += _section * 0.5
 				_bridge_limit2.position.x += _section * 0.5
 				_bridge_floor.shape.set_b(Vector2(_bridge_floor.shape.get_b().x + 20, _bridge_floor.shape.get_b().y))
-				_continue_villagers_work(_section * 0.5)
+				_continue_villagers_work(_section * 0.05)
 			# if progress is even build the bridge
 			elif _progress % 2 == 0:
 				_bridge_sprite.region_rect = Rect2(_bridge_sprite.region_rect.position, Vector2(_bridge_sprite.region_rect.size.x + _section, _bridge_sprite.region_rect.size.y))
 				_bridge_sprite.offset.x += _section * 0.5
-				_continue_villagers_work(0)
+				_continue_villagers_work(_section * 0.1)
 				# Move the scaffold left to the right
 				# random 50% thath the sprite will move
-				if _progress > 1 && randi() % 2:
+				if (_progress > 1 && randi() % 2) || (_bridge_limit.position.x < _bridge_limit2.position.x - (_section * 6)):
 					var _section_copy = _section
 					# if the bridge limit2 position is less than the bridge limit position minus the section * 10
-					if _bridge_limit.position.x > _bridge_limit2.position.x - (_section * 4):
-						_section_copy *= 0.5
+					if _bridge_limit.position.x < _bridge_limit2.position.x - (_section * 3):
+						_section_copy *= 2
 					_scaffold_sprite.region_rect = Rect2(_scaffold_sprite.region_rect.position, Vector2(_scaffold_sprite.region_rect.size.x - _section_copy, _scaffold_sprite.region_rect.size.y))
 					_scaffold_sprite.offset.x += _section_copy * 0.5
 					_bridge_limit.position.x += _section_copy * 0.5
 					_interaction_area_collision_shape.position.x += (_section_copy * 0.5)
 					_interaction_area_collision_shape.scale.x += (_section_copy * 0.05)
+					_continue_villagers_work(_section_copy * 0.5)
+
 					# move the sound position
 					_build_sound1.position.x += _section
 					# Move the villagers current far distnace to the right
+				if (_bridge_limit2.position.x >= 520):
+					# bridge is finished
+					_bridge_limit2.position.x = 600
+					_bridge_floor.shape.set_b(Vector2(600, _bridge_floor.shape.get_b().y))
+					_bridge_sprite.region_rect = Rect2(_bridge_sprite.region_rect.position, Vector2(1152, _bridge_sprite.region_rect.size.y))
+					_bridge_sprite.offset.x = 530
+					#  banish the scaffold with a tween
+					var tween = create_tween()
+					tween.tween_property(_scaffold_sprite, "modulate", Color.TRANSPARENT, 5)
+					tween.tween_callback(_scaffold_sprite.hide)
+					_bridge_limit.disabled = true
+					_bridge_limit2.disabled = true
+					_stop_production()
+					_remove_all_villagers()
+					# disbale the interaction area
+					_interaction_area.monitoring = false
 
 			# print the work of resources produced
 		_production_timer.wait_time = 4
