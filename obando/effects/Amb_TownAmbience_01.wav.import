@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cdva66mv84k4a"
-path="res://.godot/imported/Amb_TownAmbience_01.wav-99d93ae711e095a389f73b7dadbf529b.sample"
+uid="uid://bky64m0rccljn"
+path="res://.godot/imported/Amb_TownAmbience_01.wav-c23ae3fb66be114f497f7a405cf9ac13.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/Amb_TownAmbience_01.wav"
-dest_files=["res://.godot/imported/Amb_TownAmbience_01.wav-99d93ae711e095a389f73b7dadbf529b.sample"]
+source_file="res://obando/effects/Amb_TownAmbience_01.wav"
+dest_files=["res://.godot/imported/Amb_TownAmbience_01.wav-c23ae3fb66be114f497f7a405cf9ac13.sample"]
 
 [params]
 

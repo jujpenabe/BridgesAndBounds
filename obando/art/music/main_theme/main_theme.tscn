@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kupe5le86572"]
 
-[ext_resource type="AudioStream" uid="uid://ba2o5wwoim60h" path="res://bridges_and_bounds/art/music/main_theme/obando_main_theme.wav" id="1_y485d"]
+[ext_resource type="AudioStream" uid="uid://ba2o5wwoim60h" path="res://obando/art/music/main_theme/obando_main_theme.wav" id="1_y485d"]
 
 [node name="MainTheme" type="AudioStreamPlayer"]
 stream = ExtResource("1_y485d")

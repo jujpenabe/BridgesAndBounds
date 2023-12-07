@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmvoan2qublq4"]
+
+[ext_resource type="Script" path="res://obando/entities/villagers/villager_spawner.gd" id="1_dbt8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akaeh"]
+size = Vector2(32, 64)
+
+[node name="VillagerSpawner" type="StaticBody2D" groups=["spawner"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_dbt8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_akaeh")

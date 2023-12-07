@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d128m3845udgp"
-path="res://.godot/imported/SFX_Reclutement_05.wav-eb08fb88c651eed3e94cfaa500ad54cd.sample"
+uid="uid://cyx74fl7xhohg"
+path="res://.godot/imported/SFX_Reclutement_05.wav-56250b4b929237511929bf07979e6613.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/SFX_Reclutement_05.wav"
-dest_files=["res://.godot/imported/SFX_Reclutement_05.wav-eb08fb88c651eed3e94cfaa500ad54cd.sample"]
+source_file="res://obando/effects/SFX_Reclutement_05.wav"
+dest_files=["res://.godot/imported/SFX_Reclutement_05.wav-56250b4b929237511929bf07979e6613.sample"]
 
 [params]
 

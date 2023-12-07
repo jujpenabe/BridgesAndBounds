@@ -1,27 +1,31 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh2ipdr70flys"]
+[gd_scene load_steps=12 format=3 uid="uid://bh2ipdr70flys"]
 
-[ext_resource type="Script" path="res://bridges_and_bounds/core/bridge/bridge.gd" id="1_h6jhr"]
-[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://bridges_and_bounds/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
-[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://bridges_and_bounds/art/bridge/sprite_bridge_2.png" id="3_f763t"]
-[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
-[ext_resource type="AudioStream" uid="uid://d1lxucp3j7wmr" path="res://bridges_and_bounds/effects/SFX_ConstructionLoop_02.wav" id="6_v056h"]
+[ext_resource type="Script" path="res://obando/core/bridge/bridge.gd" id="1_8txy6"]
+[ext_resource type="Texture2D" uid="uid://ds88j307nd8s3" path="res://obando/art/bridge/sprite_bridge_1.png" id="2_6hcqx"]
+[ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="2_yqtl7"]
+[ext_resource type="Texture2D" uid="uid://dp46uhjda0ygh" path="res://obando/art/bridge/sprite_bridge_2.png" id="3_f763t"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="3_giklw"]
+[ext_resource type="AudioStream" uid="uid://cemxkp2feu3bj" path="res://obando/effects/SFX_ConstructionLoop_02.wav" id="6_6a37r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toequ"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y23sc"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5mi3"]
-a = Vector2(0, 32)
-b = Vector2(32, 32)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_selxd"]
-a = Vector2(32, 32)
-b = Vector2(32, 0)
+a = Vector2(16, 30)
+b = Vector2(16, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5mi3"]
+a = Vector2(0, 30)
+b = Vector2(48, 30)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_isqxm"]
+a = Vector2(48, 30)
+b = Vector2(48, 0)
 
 [node name="Bridge" type="RigidBody2D"]
 collision_layer = 8
-script = ExtResource("1_h6jhr")
+script = ExtResource("1_8txy6")
 
 [node name="BridgeSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -46,7 +50,8 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_yqtl7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="InteractionAreaCollisionShape" type="CollisionShape2D" parent="InteractionArea"]
+unique_name_in_owner = true
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_y23sc")
 
@@ -71,33 +76,41 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_mask = 2
+collision_layer = 16
+collision_mask = 0
 
 [node name="BridgeLimit" type="CollisionShape2D" parent="StaticBody2D"]
 unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_selxd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="BridgeFloor" type="CollisionShape2D" parent="StaticBody2D2"]
+unique_name_in_owner = true
 shape = SubResource("SegmentShape2D_i5mi3")
 
-[node name="BridgeFloor" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="BridgeLimit2" type="CollisionShape2D" parent="StaticBody2D2"]
 unique_name_in_owner = true
-shape = SubResource("SegmentShape2D_selxd")
+shape = SubResource("SegmentShape2D_isqxm")
 
 [node name="ATimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="BTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="CTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="BuildSound1" type="AudioStreamPlayer2D" parent="SFX"]
 unique_name_in_owner = true
-stream = ExtResource("6_v056h")
+stream = ExtResource("6_6a37r")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bt47yhqa6r1lc"
-path="res://.godot/imported/sprite_deposit_wood.png-199f8790a6838343a8cca451112de053.ctex"
+path="res://.godot/imported/sprite_deposit_wood.png-ff26a52a559a834b02bc2be45211e324.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/sprites_varied/sprite_deposit_wood.png"
-dest_files=["res://.godot/imported/sprite_deposit_wood.png-199f8790a6838343a8cca451112de053.ctex"]
+source_file="res://obando/art/sprites_varied/sprite_deposit_wood.png"
+dest_files=["res://.godot/imported/sprite_deposit_wood.png-ff26a52a559a834b02bc2be45211e324.ctex"]
 
 [params]
 

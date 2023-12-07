@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv84n12ue6qb3"
-path="res://.godot/imported/villager_c_3.png-c0a82f3999076c5fa98f9a363a37e94a.ctex"
+path="res://.godot/imported/villager_c_3.png-68c691755975de6e88eb10202cba2b7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/entities/villagers/villager_c_3.png"
-dest_files=["res://.godot/imported/villager_c_3.png-c0a82f3999076c5fa98f9a363a37e94a.ctex"]
+source_file="res://obando/entities/villagers/villager_c_3.png"
+dest_files=["res://.godot/imported/villager_c_3.png-68c691755975de6e88eb10202cba2b7d.ctex"]
 
 [params]
 

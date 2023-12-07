@@ -2,23 +2,23 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d1lxucp3j7wmr"
-path="res://.godot/imported/SFX_ConstructionLoop_02.wav-e9dc12feb3a66bd998b116e488cc0d64.sample"
+uid="uid://cemxkp2feu3bj"
+path="res://.godot/imported/SFX_ConstructionLoop_02.wav-56d21c1f40d1226be25cc4655e54a62b.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/SFX_ConstructionLoop_02.wav"
-dest_files=["res://.godot/imported/SFX_ConstructionLoop_02.wav-e9dc12feb3a66bd998b116e488cc0d64.sample"]
+source_file="res://obando/effects/SFX_ConstructionLoop_02.wav"
+dest_files=["res://.godot/imported/SFX_ConstructionLoop_02.wav-56d21c1f40d1226be25cc4655e54a62b.sample"]
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

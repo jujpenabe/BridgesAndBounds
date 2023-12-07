@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3vmk8u6jybpb"
-path="res://.godot/imported/sprite_sun.png-a4ed2096059a6cb9f201a8b33ed95bdd.ctex"
+path="res://.godot/imported/sprite_sun.png-0f995a23dca62b6950bad2b1db4ae1f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bridges_and_bounds/art/background/sprite_sun.png"
-dest_files=["res://.godot/imported/sprite_sun.png-a4ed2096059a6cb9f201a8b33ed95bdd.ctex"]
+source_file="res://obando/art/background/sprite_sun.png"
+dest_files=["res://.godot/imported/sprite_sun.png-0f995a23dca62b6950bad2b1db4ae1f5.ctex"]
 
 [params]
 

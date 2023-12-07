@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c1b0nkrcsoew0"
-path="res://.godot/imported/SFX_AxeHit_04.wav-0cbb234cc23945113f36494d3a487bd0.sample"
+uid="uid://cecwp5ot0f8gb"
+path="res://.godot/imported/SFX_AxeHit_04.wav-bde88722a8211a1c9b34daf9df83dcfb.sample"
 
 [deps]
 
-source_file="res://bridges_and_bounds/effects/SFX_AxeHit_04.wav"
-dest_files=["res://.godot/imported/SFX_AxeHit_04.wav-0cbb234cc23945113f36494d3a487bd0.sample"]
+source_file="res://obando/effects/SFX_AxeHit_04.wav"
+dest_files=["res://.godot/imported/SFX_AxeHit_04.wav-bde88722a8211a1c9b34daf9df83dcfb.sample"]
 
 [params]
 

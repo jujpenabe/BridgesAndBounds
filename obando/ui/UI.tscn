@@ -1,0 +1,277 @@
+[gd_scene load_steps=13 format=3 uid="uid://cre4snpfsasjn"]
+
+[ext_resource type="Texture2D" uid="uid://0y1pd1t2rk13" path="res://obando/ui/sprite_ui_1.png" id="1_eba6x"]
+[ext_resource type="Texture2D" uid="uid://dsytx2ehykre3" path="res://obando/ui/sprite_ui_0.png" id="1_wmbil"]
+[ext_resource type="Texture2D" uid="uid://bxq4vpbnhmatf" path="res://obando/ui/sprite_ui_2.png" id="2_efwi4"]
+[ext_resource type="Texture2D" uid="uid://bdti1ptkhrmq0" path="res://obando/ui/sprite_ui_3.png" id="3_gpsgc"]
+[ext_resource type="FontFile" uid="uid://clg2twphfn4ri" path="res://obando/ui/Pixel_Font_12px.ttf" id="4_bbt6t"]
+[ext_resource type="Texture2D" uid="uid://lm5i52ydnqqb" path="res://obando/ui/sprite_ui_4.png" id="4_jhm8u"]
+[ext_resource type="Texture2D" uid="uid://ckhnrsx73ehka" path="res://obando/ui/sprite_ui_5.png" id="7_1wxx4"]
+[ext_resource type="Texture2D" uid="uid://cah4o4cbflkj7" path="res://obando/ui/sprite_ui_6.png" id="8_qvq12"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4kdyq"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhsje"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0.407843, 0.407843, 0.407843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1kop"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0, 0.521569, 1, 0.968627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ha40o"]
+font = ExtResource("4_bbt6t")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Clock" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TextureClock" type="TextureRect" parent="Clock"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -40.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_efwi4")
+
+[node name="ClockBackground" type="TextureRect" parent="Clock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -18.0
+offset_right = 16.0009
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gpsgc")
+
+[node name="AmPm" type="Sprite2D" parent="Clock"]
+position = Vector2(10.95, 21)
+texture = ExtResource("4_jhm8u")
+hframes = 2
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Digits" type="Control" parent="Clock"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 45.0
+offset_right = 69.1848
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="HourNumber" type="Label" parent="Clock/Digits"]
+layout_mode = 2
+offset_left = -109.92
+offset_top = 5.0
+offset_right = -97.92
+offset_bottom = 17.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
+
+[node name="MinuteNumber" type="Label" parent="Clock/Digits"]
+layout_mode = 2
+offset_left = -95.92
+offset_top = 5.0
+offset_right = -83.92
+offset_bottom = 17.0
+text = "00"
+label_settings = SubResource("LabelSettings_lhsje")
+
+[node name="VillagersNumbers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.200012
+offset_top = -0.0200043
+offset_right = -0.200012
+offset_bottom = -0.0200043
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureUnits" type="TextureRect" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_wmbil")
+
+[node name="UnitsBackground" type="TextureRect" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -67.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_eba6x")
+
+[node name="Sleeping" type="Label" parent="VillagersNumbers"]
+layout_mode = 2
+offset_left = -41.92
+offset_top = -18.845
+offset_right = -29.92
+offset_bottom = -6.84498
+text = "00"
+label_settings = SubResource("LabelSettings_t1kop")
+
+[node name="TotalUnits" type="Control" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 35.94
+offset_top = -38.745
+offset_right = 60.1248
+offset_bottom = -38.745
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="Total" type="Label" parent="VillagersNumbers/TotalUnits"]
+layout_mode = 2
+offset_left = -109.92
+offset_top = 25.38
+offset_right = -97.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
+
+[node name="Current" type="Label" parent="VillagersNumbers/TotalUnits"]
+layout_mode = 2
+offset_left = -95.92
+offset_top = 25.38
+offset_right = -83.92
+offset_bottom = 37.38
+text = "00"
+label_settings = SubResource("LabelSettings_lhsje")
+
+[node name="UnitClasses" type="Control" parent="VillagersNumbers"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -39.94
+offset_top = -39.045
+offset_right = 22.34
+offset_bottom = -39.045
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RedNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
+layout_mode = 2
+offset_left = -110.0
+offset_top = 25.0
+offset_right = -98.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
+
+[node name="GreenNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
+layout_mode = 2
+offset_left = -88.0
+offset_top = 25.0
+offset_right = -76.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
+
+[node name="BlueNumber" type="Label" parent="VillagersNumbers/UnitClasses"]
+layout_mode = 2
+offset_left = -67.0
+offset_top = 25.0
+offset_right = -55.0
+offset_bottom = 37.0
+text = "00"
+label_settings = SubResource("LabelSettings_4kdyq")
+
+[node name="Resources" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.205
+offset_bottom = -32.205
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="TextureResources" type="TextureRect" parent="Resources"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 32.0
+texture = ExtResource("7_1wxx4")
+
+[node name="ResourcesBackground" type="TextureRect" parent="Resources"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 32.0
+texture = ExtResource("8_qvq12")
+
+[node name="Wood" type="Label" parent="Resources"]
+layout_mode = 0
+offset_left = 14.675
+offset_top = 18.39
+offset_right = 54.675
+offset_bottom = 41.39
+text = "00"
+label_settings = SubResource("LabelSettings_ha40o")
+
+[node name="Cob" type="Label" parent="Resources"]
+layout_mode = 0
+offset_left = 36.61
+offset_top = 18.39
+offset_right = 76.61
+offset_bottom = 41.39
+text = "00"
+label_settings = SubResource("LabelSettings_ha40o")
+
+[node name="Food" type="Label" parent="Resources"]
+layout_mode = 0
+offset_left = 57.79
+offset_top = 18.39
+offset_right = 97.79
+offset_bottom = 41.39
+text = "00"
+label_settings = SubResource("LabelSettings_ha40o")

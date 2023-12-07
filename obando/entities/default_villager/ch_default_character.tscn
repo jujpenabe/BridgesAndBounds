@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://rlp0eoxx6wnr"]
 
-[ext_resource type="Script" path="res://bridges_and_bounds/entities/default_villager/ch_default_villager.gd" id="1_s7swt"]
-[ext_resource type="Texture2D" uid="uid://bjp173ogf1y7w" path="res://bridges_and_bounds/entities/main_character/t_default_villager_s.png" id="2_a5nie"]
-[ext_resource type="Texture2D" uid="uid://shpt1yh7apco" path="res://bridges_and_bounds/entities/default_villager/t_default_villager_s.png" id="3_ia83a"]
-[ext_resource type="Script" path="res://bridges_and_bounds/interaction/interaction_area/interaction_area.gd" id="4_b08il"]
-[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://bridges_and_bounds/ui/font_superstar_memesbruh03.ttf" id="5_hmw0l"]
+[ext_resource type="Script" path="res://obando/entities/main_character/ch_main_character.gd" id="1_s7swt"]
+[ext_resource type="Texture2D" uid="uid://bjp173ogf1y7w" path="res://obando/entities/main_character/t_default_villager_s.png" id="2_a5nie"]
+[ext_resource type="Texture2D" uid="uid://shpt1yh7apco" path="res://obando/entities/default_villager/t_default_villager_s.png" id="3_ia83a"]
+[ext_resource type="Script" path="res://obando/interaction/interaction_area/interaction_area.gd" id="4_b08il"]
+[ext_resource type="FontFile" uid="uid://c4ae5wgpw7jjj" path="res://obando/ui/font_superstar_memesbruh03.ttf" id="5_hmw0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7wrt"]
 atlas = ExtResource("2_a5nie")
@@ -150,7 +150,7 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dpoi"]
 
 [node name="Villager" type="CharacterBody2D" groups=["villager"]]
-z_index = 2
+z_index = 3
 collision_layer = 4
 script = ExtResource("1_s7swt")
 
